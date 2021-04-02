@@ -1,0 +1,32 @@
+<div class="centered-content">
+    <div class="modal-box fadeInBottom">
+        <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
+        <div class="modal-topbar">
+            <div class="question-circles">
+                <p class="question-circle" *ngFor="let question of questions; let i = index" (click)="selecteQuestion(i)" [ngClass]="{'add-circle': i == currentQuestion}">{{i+1}}</p>
+            </div>
+        </div>
+        <div class="question">
+            <p class="question-title">{{questions[currentQuestion].title}}</p>
+            <div class="question-range-container" *ngIf="questions[currentQuestion].input == 0">
+                <p class="question-range-title">0</p>
+                <input type="range" #rangeEl value="{{(answers[currentQuestion].answer != null) ? answers[currentQuestion].answer : 5}}" (input)="updateRange(rangeEl.value)"/>
+                <p class="question-range-title">10</p>
+            </div>
+            <p class="description" *ngIf="questions[currentQuestion].input == 0">Current value: {{(answers[currentQuestion].answer != null) ? answers[currentQuestion].answer/10 : range}}</p>
+            <input class="question-input" (input)="updateText(textEl.value)" #textEl value="{{answers[currentQuestion].answer}}" type="text" placeholder="Type here..." *ngIf="questions[currentQuestion].input == 1" />
+        </div>
+        <div class="questions-navigation">
+            <div class="question-navigation" (click)="selecteQuestion(currentQuestion-1)">
+                <i class="fa fa-chevron-left"></i>
+                <p class="question-navigation-title">Previous</p>
+            </div>
+            <div class="question-navigation" (click)="selecteQuestion(currentQuestion+1)">
+                <p class="question-navigation-title">Next</p>
+                <i class="fa fa-chevron-right"></i>
+            </div>
+        </div>
+        <button class="primary-button">Finish and submit</button>
+    </div>
+</div>
+

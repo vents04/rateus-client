@@ -1,7 +1,14 @@
 @import '../../../styles.scss';
 
-.slogan {
+.beta {
+    color: $primary;
     font-family: $semi-bold-font;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+
+.slogan {
+    font-family: $bold-font;
     font-size: 3.75rem;
     color: black;
     max-width: 50%;

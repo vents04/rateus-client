@@ -40,6 +40,14 @@
     color: black;
 }
 
+.success-text {
+    color: $primary;
+    font-family: $semi-bold-font;
+    font-size: 1rem;
+    margin-top: 0.75rem;
+    text-align: center;
+}
+
 .fadeInBottom { animation-name: fadeInBottom }
 @keyframes fadeInBottom {
     from {

@@ -4,14 +4,15 @@
         <div class="modal-inputs">
             <div class="modal-input-container">
                 <p class="modal-input-title">Address</p>
-                <input type="text" class="modal-input" placeholder="Click here to type">
+                <input type="text" class="modal-input" placeholder="Click here to type" #addressEl>
             </div>
             <div class="modal-input-container">
                 <p class="modal-input-title">Email&nbsp;/&nbsp;Phone number</p>
-                <input type="text" class="modal-input" placeholder="Click here to type">
+                <input type="text" class="modal-input" placeholder="Click here to type" #emailOrPhoneEl>
             </div>
         </div>
         <p class="description small-description">When you submit your application a person from our team will contact you to tailor the best solution for you and your business.</p>
-        <button class="primary-button">Submit</button>
+        <button class="primary-button" (click)="apply(addressEl.value, emailOrPhoneEl.value)">Submit</button>
+        <p class="success-text" *ngIf="success">Successfully submitted! You will be redirected to home.</p>
     </div>
 </div>

@@ -1,0 +1,81 @@
+@import '../../../styles.scss';
+
+.modal-box {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.question-circles {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.question-circle {
+    width: 28px;
+    height: 28px;
+    border: 2px solid $primary;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: $semi-bold-font;
+    font-size: 0.9rem;
+    margin-right: 0.75rem;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $primary;
+        color: white;
+        transition: 0.4s;
+    }
+}
+
+.question-circle:last-of-type {
+    margin-right: 0px !important;
+}
+
+.add-circle {
+    background-color: $primary;
+    color: white;
+}
+
+.question-title {
+    font-family: $regular-font;
+    font-size: 0.9rem;
+    color: #262626;
+}
+
+.question-input {
+    padding: 0.5rem;
+    border: 1px solid #e7e7e7;
+    font-family: $regular-font;
+    font-size: 1rem;
+    color: black;
+    border-radius: 3px;
+    min-width: calc(350px - 1.4rem);
+    max-width: calc(350px - 1.5rem);
+    margin-bottom: 1rem;
+
+    &:hover {
+        cursor: pointer;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+.grey-button {
+    margin-bottom: 0.5rem;
+}
+
+.fadeInBottom { animation-name: fadeInBottom }
+@keyframes fadeInBottom {
+    from {
+        opacity: 0;
+        transform: translateY(15%);
+    }
+    to { opacity: 1 }
+}
