@@ -62,6 +62,13 @@ $primary: #90d977;
     font-size: 1.5rem;
     color: black;
     text-align: center;
+
+    &:hover {
+        cursor: pointer
+    }
+    &:focus {
+        outline: none;
+    }
 }
 
 .product {
@@ -89,3 +96,4 @@ $primary: #90d977;
         outline: none;
     }
 }
+
