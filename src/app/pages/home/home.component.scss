@@ -1,0 +1,52 @@
+@import '../../../styles.scss';
+
+.slogan {
+    font-family: $semi-bold-font;
+    font-size: 3.75rem;
+    color: black;
+    max-width: 50%;
+    text-align: center;
+
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+}
+
+.slogan, .cssanimation span {
+    animation-duration: 1.75s;
+    animation-fill-mode: both;
+}
+
+.slogan span { display: inline-block }
+
+.fadeInBottom { animation-name: fadeInBottom }
+@keyframes fadeInBottom {
+    from {
+        opacity: 0;
+        transform: translateY(15%);
+    }
+    to { opacity: 1 }
+}
+
+@keyframes backgroundAnimation {
+    from {background-color: $primary;}
+    to {background-color: $primary;}
+}
+
+@media only screen and (max-width: 1024px) {
+    .slogan {
+        max-width: 80%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .slogan {
+        font-size: 2.5rem;
+        max-width: 95%;
+    }
+    .description {
+        text-align: center;
+    }
+}

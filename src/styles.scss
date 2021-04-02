@@ -1,1 +1,91 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Logo';
+    src: url('./assets/fonts/Quicksand/static/Quicksand-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Montserrat Bold';
+    src: url('./assets/fonts/Montserrat/Montserrat-Bold.ttf');
+}
+@font-face {
+    font-family: 'Montserrat SemiBold';
+    src: url('./assets/fonts/Montserrat/Montserrat-SemiBold.ttf');
+}
+@font-face {
+    font-family: 'Montserrat Regular';
+    src: url('./assets/fonts/Montserrat/Montserrat-Regular.ttf');
+}
+
+
+
+$logo-font: 'Logo', sans-serif;
+$bold-font: 'Montserrat Bold', sans-serif;
+$semi-bold-font: 'Montserrat SemiBold', sans-serif;
+$regular-font: 'Montserrat Regular', sans-serif;
+
+$primary: #90d977;
+
+.centered-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.description {
+    font-family: $regular-font;
+    font-size: 0.9rem;
+    color: gray;
+    margin-top: 1rem;
+}
+
+.small-description {
+    font-size: 0.7rem;
+}
+
+.modal-box {
+    box-shadow: 0px 0px 6px #e7e7e7;
+    border: 1px solid #e7e7e7;
+    border-radius: 6px;
+    padding: 1.5rem 4rem;
+    min-width: 350px;
+    max-width: 350px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.logo {
+    font-family: $logo-font;
+    font-size: 1.5rem;
+    color: black;
+    text-align: center;
+}
+
+.product {
+    font-family: $regular-font;
+    font-size: 1rem;
+    margin-top: 4px;
+}
+
+.primary-button {
+    background-color: $primary;
+    animation: backgroundAnimation 5s infinite;
+    color: white;
+    font-family: $semi-bold-font;
+    font-size: 1rem;
+    padding: 0.75rem;
+    border-radius: 3px;
+    border: none;
+    min-width: 150px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
