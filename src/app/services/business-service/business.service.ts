@@ -11,4 +11,8 @@ export class BusinessService {
   getBusiness() {
     return this.webRequestsService.getBusiness();
   }
+
+  getColor(id: string) {
+    return this.webRequestsService.getColor(id);
+  }
 }

@@ -1,4 +1,10 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { BusinessService } from 'src/app/services/business-service/business.service';
+import { QuestionnaireService } from 'src/app/services/questionnaire-service/questionnaire.service';
 
 @Component({
   selector: 'app-answer-questionnaire',
@@ -7,7 +13,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnswerQuestionnaireComponent implements OnInit {
 
-  constructor() { }
+  constructor(private questionnaireService: QuestionnaireService, private businessService: BusinessService, private activatedRoute: ActivatedRoute) { }
+
+  questionnaireId: string = undefined;
+  questionnaireTitle: string = undefined;
+  businessId: string = undefined;
 
   questions = [
     {
@@ -19,21 +29,20 @@ export class AnswerQuestionnaireComponent implements OnInit {
       "input": 0,
     }
   ];
+  color: string = '#90d977';
 
-  answers = [
-    {
-      "answer": null
-    },
-    {
-      "answer": null
-    }
-  ]
+  answers = [];
 
   currentQuestion = 0;
 
   range = 5;
 
+  error: boolean = false;
+  success: boolean = false;
+
   ngOnInit(): void {
+    this.questionnaireId = this.activatedRoute.snapshot.paramMap.get("id");
+    this.getQuestionnaire();
   }
 
   selecteQuestion(index: number): void {
@@ -56,4 +65,34 @@ export class AnswerQuestionnaireComponent implements OnInit {
     this.answers[this.currentQuestion].answer = text;
   }
 
+  getQuestionnaire(): void {
+    this.questionnaireService.getQuestionnaire(this.questionnaireId).pipe(
+      catchError((err: any) => {
+        this.error = true;
+        return throwError(err);
+      })
+    ).subscribe((response: HttpResponse<any>) => {
+      if (response.body.questionnaire) {
+        this.success = true;
+        this.questions = response.body.questionnaire.questions;
+        this.questionnaireTitle = response.body.questionnaire.title;
+        this.businessId = response.body.questionnaire.businessId;
+
+        for (let question of this.questions) {
+          this.answers.push({'answer': '', input: question.input});
+        }
+
+        this.getColor();
+      } else {
+        this.error = true;
+      }
+    })
+  }
+
+  getColor(): void {
+    this.businessService.getColor(this.businessId).subscribe((response: HttpResponse<any>) => {
+      this.color = response.body.color;
+      console.log(this.color);
+    })
+  }
 }

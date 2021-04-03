@@ -1,19 +1,20 @@
 <div class="logo-container">
     <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
 </div>
-<div class="centered-content">
+<div class="centered-content" *ngIf="!success && error">
+    <div class="modal-box fadeInBottom">
+        <p class="error-text">Questionnaire not found! If you think this is an error please contact us at support@uploy.app or by calling +359 882 764 107</p>
+    </div>
+</div>
+<div class="centered-content" *ngIf="success && !error">
     <div class="modal-box fadeInBottom">
         <div class="pushers">
-            <p class="pusher-value">Beauty Studio Desita</p>
-            <p class="description">Help them become better.</p>
+            <p class="pusher-value" [style.color]="color">Beauty Studio Desita</p>
+            <p class="description">Help them become better</p>
         </div>
-        <div class="modal-topbar">
-            <div class="question-circles">
-                <p class="question-circle" *ngFor="let question of questions; let i = index" (click)="selecteQuestion(i)" [ngClass]="{'add-circle': i == currentQuestion}">{{i+1}}</p>
-            </div>
-        </div>
+        <hr>
         <div class="question">
-            <p class="question-title">{{questions[currentQuestion].title}}</p>
+            <p class="question-title" [style.color]="color">{{questions[currentQuestion].title}}</p>
             <div class="question-range-container" *ngIf="questions[currentQuestion].input == 0">
                 <p class="question-range-title">0</p>
                 <input type="range" #rangeEl value="{{(answers[currentQuestion].answer != null) ? answers[currentQuestion].answer : 5}}" (input)="updateRange(rangeEl.value)"/>
@@ -23,16 +24,19 @@
             <input class="question-input" (input)="updateText(textEl.value)" #textEl value="{{answers[currentQuestion].answer}}" type="text" placeholder="Type here..." *ngIf="questions[currentQuestion].input == 1" />
         </div>
         <div class="questions-navigation">
-            <div class="question-navigation" (click)="selecteQuestion(currentQuestion-1)">
-                <i class="fa fa-chevron-left"></i>
+            <div class="question-navigation third-width" (click)="selecteQuestion(currentQuestion-1)">
+                <i class="fa fa-chevron-left" [style.color]="color"></i>
                 <p class="question-navigation-title">Previous</p>
             </div>
-            <div class="question-navigation" (click)="selecteQuestion(currentQuestion+1)">
+            <div class="question-navigation third-width centered">
+                <p>{{currentQuestion+1}}/{{questions.length}}</p>
+            </div>
+            <div class="question-navigation third-width" (click)="selecteQuestion(currentQuestion+1)">
                 <p class="question-navigation-title">Next</p>
-                <i class="fa fa-chevron-right"></i>
+                <i class="fa fa-chevron-right" [style.color]="color"></i>
             </div>
         </div>
-        <button class="primary-button">Finish and submit</button>
+        <button class="primary-button" [style.backgroundColor]="color">Finish and submit</button>
     </div>
 </div>
 
