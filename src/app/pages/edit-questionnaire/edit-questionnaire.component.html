@@ -8,7 +8,7 @@
         <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
         <div class="questionnaire-title-seciton">
             <p class="question-title">Questionnaire title</p>
-            <input class="question-input" type="text" value="{{questionnaireTitle}}" placeholder="Type here..." #questionnaireTitleEl value="{{questions[currentQuestion].title}}" (input)="updateTitle(questionnaireTitleEl.value)"/>
+            <input class="question-input" type="text" value="{{questionnaireTitle}}" placeholder="Type here..." #questionnaireTitleEl (input)="updateTitle(questionnaireTitleEl.value)"/>
         </div>
         <div class="modal-topbar">
             <div class="question-circles">
@@ -26,7 +26,9 @@
             </select>
         </div>
         <button class="primary-button grey-button" (click)="deleteQuestion()">Delete this question</button>
-        <button class="primary-button">Finish and submit</button>
+        <button class="primary-button" (click)="submitData()">Finish and submit</button>
+        <p class="error-text" *ngIf="errorUpdate">There was an error updating your questionnaire. Try again or contact support at support@uploy.app or by calling +359 882 764 107</p>
+        <p class="success-text" *ngIf="successUpdate">Successfully updated the questionnaire! The window will reload in 4s.</p>
     </div>
 </div>
 

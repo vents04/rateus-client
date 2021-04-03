@@ -52,5 +52,11 @@ export class WebRequestsService {
     { color: color },
     { observe: 'response', responseType: 'json' });
   }
+
+  updateQuestionnaire(id: string, questions: any, title: string) {
+    return this.http.put(`${ROOT_URL}/questionnaire`,
+    { _id: id, questions: questions, title: title },
+    { observe: 'response', responseType: 'json' });
+  }
 }
 

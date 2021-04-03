@@ -76,4 +76,8 @@ export class DashboardComponent implements OnInit {
       window.location.reload();
     })
   }
+
+  redirectToQuestionnaire(id: string): void {
+    this.router.navigate([`/edit-questionnaire/${id}`]);
+  }
 }

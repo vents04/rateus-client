@@ -69,17 +69,17 @@
                 </div>
                 <div class="col">
                     <div class="data">
-                        <p class="data-value" [style.color]="color">{{dashboard.questionnaires}}</p>
+                        <p class="data-value" [style.color]="color">{{dashboard.questionnairesCount}}</p>
                         <p class="data-title">questionnaire</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="min-section">
+        <div class="min-section" *ngIf="dashboard">
             <p class="min-section-title">Questionnaires</p>
-            <div class="questionnaire">
-                <p class="questionnaire-title">Test</p>
-                <p class="questionnaire-responses"><span class="questionnaire-responses-value" [style.color]="color">20</span>&nbsp;responses</p>
+            <div class="questionnaire" *ngFor="let questionnaire of dashboard.questionnaires" id="{{questionnaire._id}}" #questionnaireEl (click)="redirectToQuestionnaire(questionnaireEl.id)">
+                <p class="questionnaire-title">{{questionnaire.title}}</p>
+                <p class="questionnaire-responses"><span class="questionnaire-responses-value" [style.color]="color">{{questionnaire.responses}}</span>&nbsp;responses</p>
             </div>
         </div>
     </div>
