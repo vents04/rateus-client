@@ -15,4 +15,12 @@ export class BusinessService {
   getColor(id: string) {
     return this.webRequestsService.getColor(id);
   }
+
+  getDashboard() {
+    return this.webRequestsService.getDashboard();
+  }
+
+  updateColor(color: string) {
+    return this.webRequestsService.updateColor(color);
+  }
 }

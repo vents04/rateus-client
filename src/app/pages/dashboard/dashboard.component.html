@@ -4,14 +4,14 @@
         <div class="modal-body">
             <p class="description color-dropdown-description">Select brand color</p>
             <div class="inline color-dropdown-inline">
-                <div class="color color-dropdown-option big-color" [style.background]="'#90d977'"></div>
-                <div class="color color-dropdown-option big-color" [style.background]="'#f2d639'"></div>
-                <div class="color color-dropdown-option big-color" [style.background]="'#d53939'"></div>
+                <div class="color color-dropdown-option big-color" [style.background]="'#90d977'" (click)="updateColor('#90d977')"></div>
+                <div class="color color-dropdown-option big-color" [style.background]="'#f2d639'" (click)="updateColor('#f2d639')"></div>
+                <div class="color color-dropdown-option big-color" [style.background]="'#d53939'" (click)="updateColor('#d53939')"></div>
             </div>
             <div class="inline color-dropdown-inline">
-                <div class="color color-dropdown-option big-color" [style.background]="'#1f6cb0'"></div>
-                <div class="color color-dropdown-option big-color" [style.background]="'#ea9215'"></div>
-                <div class="color color-dropdown-option big-color" [style.background]="'#642ab6'"></div>
+                <div class="color color-dropdown-option big-color" [style.background]="'#1f6cb0'" (click)="updateColor('#1f6cb0')"></div>
+                <div class="color color-dropdown-option big-color" [style.background]="'#ea9215'" (click)="updateColor('#ea9215')"></div>
+                <div class="color color-dropdown-option big-color" [style.background]="'#642ab6'" (click)="updateColor('#642ab6')"></div>
             </div>
             <button class="small-primary-button lightgrey-button" data-dismiss="modal">Cancel</button>
         </div>
@@ -53,23 +53,23 @@
             <i class="fas fa-info-circle" [style.color]="color"></i>
             <p class="description">If you have any questions, you can contact our support at <span class="important">support@uploy.app</span> or call <span class="important">+359 882 764 107</span></p>
         </div>
-        <div class="data-container container">
+        <div class="data-container container" *ngIf="dashboard">
             <div class="row">
                 <div class="col">
                     <div class="data">
-                        <p class="data-value" [style.color]="color">0</p>
+                        <p class="data-value" [style.color]="color">{{dashboard.totalResponses}}</p>
                         <p class="data-title">responses in total</p>
                     </div>
                 </div>
                 <div class="col">
                     <div class="data">
-                        <p class="data-value" [style.color]="color">20</p>
+                        <p class="data-value" [style.color]="color">{{dashboard.lastWeekResponses}}</p>
                         <p class="data-title">responses last week</p>
                     </div>
                 </div>
                 <div class="col">
                     <div class="data">
-                        <p class="data-value" [style.color]="color">1</p>
+                        <p class="data-value" [style.color]="color">{{dashboard.questionnaires}}</p>
                         <p class="data-title">questionnaire</p>
                     </div>
                 </div>

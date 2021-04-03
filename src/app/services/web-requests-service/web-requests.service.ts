@@ -41,4 +41,16 @@ export class WebRequestsService {
     return this.http.get(`${ROOT_URL}/business/${id}/color`,
     { observe: 'response', responseType: 'json' });
   }
+
+  getDashboard() {
+    return this.http.get(`${ROOT_URL}/business/dashboard`,
+    { observe: 'response', responseType: 'json' });
+  }
+
+  updateColor(color: string) {
+    return this.http.put(`${ROOT_URL}/business/color`,
+    { color: color },
+    { observe: 'response', responseType: 'json' });
+  }
 }
+

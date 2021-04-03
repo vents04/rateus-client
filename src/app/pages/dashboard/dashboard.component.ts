@@ -19,7 +19,8 @@ export class DashboardComponent implements OnInit {
   loadPage: boolean = false;
 
   business: any = null;
-  color: string = "#90d977"
+  color: string = "#90d977";
+  dashboard: any = null;
 
   showColorSelector : boolean = false;
 
@@ -54,6 +55,7 @@ export class DashboardComponent implements OnInit {
     ).subscribe((response: HttpResponse<any>) => {
       this.business = response.body.business;
       this.getColor();
+      this.getDashboard();
     })
   }
 
@@ -63,5 +65,15 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  
+  getDashboard(): void {
+    this.businessService.getDashboard().subscribe((response: HttpResponse<any>) => {
+      this.dashboard = response.body;
+    })
+  }
+
+  updateColor(color: string): void {
+    this.businessService.updateColor(color).subscribe((response: HttpResponse<any>) => {
+      window.location.reload();
+    })
+  }
 }
