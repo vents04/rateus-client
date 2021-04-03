@@ -10,6 +10,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin: 1rem 0rem;
 }
 
 .question-circle {
@@ -46,6 +47,7 @@
     font-family: $regular-font;
     font-size: 0.9rem;
     color: #262626;
+    margin-bottom: 0.25rem;
 }
 
 .question-input {
