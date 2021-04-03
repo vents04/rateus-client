@@ -73,6 +73,18 @@
     margin-bottom: 0.5rem;
 }
 
+.error-text {
+    color: $error;
+    font-family: $semi-bold-font;
+    font-size: 1rem;
+    margin-top: 0.75rem;
+    text-align: center;
+}
+
+.questionnaire-title-seciton {
+    margin-top: 2rem;
+}
+
 .fadeInBottom { animation-name: fadeInBottom }
 @keyframes fadeInBottom {
     from {

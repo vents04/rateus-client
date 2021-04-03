@@ -31,4 +31,9 @@ export class WebRequestsService {
     return this.http.get(`${ROOT_URL}/business`,
     { observe: 'response', responseType: 'json' });
   }
+
+  getQuestionnaire(id: string) {
+    return this.http.get(`${ROOT_URL}/questionnaire/${id}`,
+    { observe: 'response', responseType: 'json' });
+  }
 }

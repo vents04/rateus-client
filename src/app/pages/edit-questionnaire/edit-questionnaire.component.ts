@@ -1,4 +1,9 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { QuestionnaireService } from 'src/app/services/questionnaire-service/questionnaire.service';
 
 @Component({
   selector: 'app-edit-questionnaire',
@@ -7,8 +12,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditQuestionnaireComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private questionnaireService: QuestionnaireService) { }
 
+  questionnaireId: string = undefined;
+  questionnaireTitle: string = undefined;
   questions = [
     {
       "title": 'Test',
@@ -18,8 +25,12 @@ export class EditQuestionnaireComponent implements OnInit {
 
   currentQuestion = 0;
 
-  ngOnInit(): void {
+  error: boolean = false;
+  success: boolean = false;
 
+  ngOnInit(): void {
+    this.questionnaireId = this.activatedRoute.snapshot.paramMap.get("id");
+    this.getQuestionnaire();
   }
 
   addQuestion(): void {
@@ -42,5 +53,22 @@ export class EditQuestionnaireComponent implements OnInit {
       this.questions.splice(this.currentQuestion, 1);
       this.currentQuestion = this.questions.length - 1;
     }
+  }
+
+  getQuestionnaire() {
+    this.questionnaireService.getQuestionnaire(this.questionnaireId).pipe(
+      catchError((err: any) => {
+        this.error = true;
+        return throwError(err);
+      })
+    ).subscribe((response: HttpResponse<any>) => {
+      if (response.body.questionnaire) {
+        this.success = true;
+        this.questions = response.body.questionnaire.questions;
+        this.questionnaireTitle = response.body.questionnaire.title;
+      } else {
+        this.error = true;
+      }
+    })
   }
 }
