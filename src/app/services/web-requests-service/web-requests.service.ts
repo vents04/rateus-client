@@ -58,5 +58,16 @@ export class WebRequestsService {
     { _id: id, questions: questions, title: title },
     { observe: 'response', responseType: 'json' });
   }
+
+  createAnswer(answers: any, questionnaireId: string) {
+    return this.http.post(`${ROOT_URL}/answer`,
+    { answers: answers, questionnaireId: questionnaireId },
+    { observe: 'response', responseType: 'json' });
+  }
+
+  getAnswers(questionnaireId: string) {
+    return this.http.get(`${ROOT_URL}/answer/by-questionnaire-id/${questionnaireId}`,
+    { observe: 'response', responseType: 'json' });
+  }
 }
 

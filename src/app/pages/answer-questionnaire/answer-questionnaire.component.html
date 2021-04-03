@@ -1,42 +1,61 @@
-<div class="logo-container">
-    <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
-</div>
-<div class="centered-content" *ngIf="!success && error">
-    <div class="modal-box fadeInBottom">
-        <p class="error-text">Questionnaire not found! If you think this is an error please contact us at support@uploy.app or by calling +359 882 764 107</p>
+<div [hidden]="!successSubmission">
+    <div class="centered-content">
+        <div class="modal-box">
+            <svg id="successAnimation" class="animated" xmlns="http://www.w3.org/2000/svg" width="70" height="70"
+            viewBox="0 0 70 70">
+            <path id="successAnimationResult" fill="#D8D8D8" [style.fill]="color"
+                d="M35,60 C21.1928813,60 10,48.8071187 10,35 C10,21.1928813 21.1928813,10 35,10 C48.8071187,10 60,21.1928813 60,35 C60,48.8071187 48.8071187,60 35,60 Z M23.6332378,33.2260427 L22.3667622,34.7739573 L34.1433655,44.40936 L47.776114,27.6305926 L46.223886,26.3694074 L33.8566345,41.59064 L23.6332378,33.2260427 Z" />
+            <circle id="successAnimationCircle" cx="35" cy="35" r="24" stroke="#979797" stroke-width="2"
+                stroke-linecap="round" fill="transparent" [style.stroke]="color"/>
+            <polyline id="successAnimationCheck" [style.stroke]="color" stroke="#979797" stroke-width="2" points="23 34 34 43 47 27"
+                fill="transparent" />
+            </svg>
+            <p class="modal-title">Success!</p>
+            <p class="description">We have sent your answers. Thank you for your time.</p>
+        </div>
     </div>
 </div>
-<div class="centered-content" *ngIf="success && !error">
-    <div class="modal-box fadeInBottom">
-        <div class="pushers">
-            <p class="pusher-value" [style.color]="color">Beauty Studio Desita</p>
-            <p class="description">Help them become better</p>
-        </div>
-        <hr>
-        <div class="question">
-            <p class="question-title" [style.color]="color">{{questions[currentQuestion].title}}</p>
-            <div class="question-range-container" *ngIf="questions[currentQuestion].input == 0">
-                <p class="question-range-title">0</p>
-                <input type="range" #rangeEl value="{{(answers[currentQuestion].answer != null) ? answers[currentQuestion].answer : 5}}" (input)="updateRange(rangeEl.value)"/>
-                <p class="question-range-title">10</p>
-            </div>
-            <p class="description" *ngIf="questions[currentQuestion].input == 0">Current value: {{(answers[currentQuestion].answer != null) ? answers[currentQuestion].answer/10 : range}}</p>
-            <input class="question-input" (input)="updateText(textEl.value)" #textEl value="{{answers[currentQuestion].answer}}" type="text" placeholder="Type here..." *ngIf="questions[currentQuestion].input == 1" />
-        </div>
-        <div class="questions-navigation">
-            <div class="question-navigation third-width" (click)="selecteQuestion(currentQuestion-1)">
-                <i class="fa fa-chevron-left" [style.color]="color"></i>
-                <p class="question-navigation-title">Previous</p>
-            </div>
-            <div class="question-navigation third-width centered">
-                <p>{{currentQuestion+1}}/{{questions.length}}</p>
-            </div>
-            <div class="question-navigation third-width" (click)="selecteQuestion(currentQuestion+1)">
-                <p class="question-navigation-title">Next</p>
-                <i class="fa fa-chevron-right" [style.color]="color"></i>
-            </div>
-        </div>
-        <button class="primary-button" [style.backgroundColor]="color">Finish and submit</button>
+<div [hidden]="successSubmission">
+    <div class="logo-container">
+        <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
     </div>
+    <div class="centered-content" *ngIf="!success && error">
+        <div class="modal-box fadeInBottom">
+            <p class="error-text">Questionnaire not found! If you think this is an error please contact us at support@uploy.app or by calling +359 882 764 107</p>
+        </div>
+    </div>
+    <div class="centered-content" *ngIf="success && !error">
+        <div class="modal-box fadeInBottom">
+            <div class="pushers">
+                <p class="pusher-value" [style.color]="color">Beauty Studio Desita</p>
+                <p class="description">Help them become better</p>
+            </div>
+            <hr>
+            <div class="question">
+                <p class="question-title" [style.color]="color">{{questions[currentQuestion].title}}</p>
+                <div class="question-range-container" *ngIf="questions[currentQuestion].input == 0">
+                    <p class="question-range-title">0</p>
+                    <input type="range" #rangeEl value="{{(answers[currentQuestion].answer != null) ? answers[currentQuestion].answer : 5}}" (input)="updateRange(rangeEl.value)"/>
+                    <p class="question-range-title">10</p>
+                </div>
+                <p class="description" *ngIf="questions[currentQuestion].input == 0">Current value: {{(answers[currentQuestion].answer != null) ? answers[currentQuestion].answer/10 : range}}</p>
+                <input class="question-input" (input)="updateText(textEl.value)" #textEl value="{{answers[currentQuestion].answer}}" type="text" placeholder="Type here..." *ngIf="questions[currentQuestion].input == 1" />
+            </div>
+            <div class="questions-navigation">
+                <div class="question-navigation third-width" (click)="selecteQuestion(currentQuestion-1)">
+                    <i class="fa fa-chevron-left" [style.color]="color"></i>
+                    <p class="question-navigation-title">Previous</p>
+                </div>
+                <div class="question-navigation third-width centered">
+                    <p>{{currentQuestion+1}}/{{questions.length}}</p>
+                </div>
+                <div class="question-navigation third-width" (click)="selecteQuestion(currentQuestion+1)">
+                    <p class="question-navigation-title">Next</p>
+                    <i class="fa fa-chevron-right" [style.color]="color"></i>
+                </div>
+            </div>
+            <button class="primary-button" [style.backgroundColor]="color" (click)="submit()">Finish and submit</button>
+            <p class="error-text" *ngIf="errorSubmission">There was an error submitting your answers. Please try again or contact support at support@support@uploy.app or by calling +359 882 764 107</p>
+        </div>
+    </div>    
 </div>
-

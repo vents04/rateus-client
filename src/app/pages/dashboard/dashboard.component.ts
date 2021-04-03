@@ -3,6 +3,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { AnswerService } from 'src/app/services/answer-service/answer.service';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { BusinessService } from 'src/app/services/business-service/business.service';
 
@@ -13,7 +14,7 @@ import { BusinessService } from 'src/app/services/business-service/business.serv
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private authService: AuthService, private businessService: BusinessService, private router: Router) { }
+  constructor(private authService: AuthService, private businessService: BusinessService, private router: Router, private answerService: AnswerService) { }
 
   authenticated: boolean = false;
   loadPage: boolean = false;
@@ -21,8 +22,10 @@ export class DashboardComponent implements OnInit {
   business: any = null;
   color: string = "#90d977";
   dashboard: any = null;
+  selectedQuestionnaire: any;
 
   showColorSelector : boolean = false;
+  showAnswers: boolean = false;
 
   ngOnInit(): void {
     this.checkToken();
@@ -79,5 +82,20 @@ export class DashboardComponent implements OnInit {
 
   redirectToQuestionnaire(id: string): void {
     this.router.navigate([`/edit-questionnaire/${id}`]);
+  }
+
+  getAnswers(): void {
+    this.answerService.getAnswers(this.selectedQuestionnaire._id).pipe(
+      catchError((err: any) => {
+        return throwError(err);
+      })
+    ).subscribe((response: HttpResponse<any>) => {
+      this.selectedQuestionnaire.answers = response.body.answers;
+      this.selectedQuestionnaire.questionsCount = response.body.questionsCount;
+    })
+  }
+
+  counter(i: number) {
+    return new Array(i);
   }
 }

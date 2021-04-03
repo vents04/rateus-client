@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { AnswerService } from 'src/app/services/answer-service/answer.service';
 import { BusinessService } from 'src/app/services/business-service/business.service';
 import { QuestionnaireService } from 'src/app/services/questionnaire-service/questionnaire.service';
 
@@ -13,7 +14,10 @@ import { QuestionnaireService } from 'src/app/services/questionnaire-service/que
 })
 export class AnswerQuestionnaireComponent implements OnInit {
 
-  constructor(private questionnaireService: QuestionnaireService, private businessService: BusinessService, private activatedRoute: ActivatedRoute) { }
+  constructor(private questionnaireService: QuestionnaireService, 
+              private businessService: BusinessService, 
+              private activatedRoute: ActivatedRoute,
+              private answerService: AnswerService) { }
 
   questionnaireId: string = undefined;
   questionnaireTitle: string = undefined;
@@ -39,6 +43,8 @@ export class AnswerQuestionnaireComponent implements OnInit {
 
   error: boolean = false;
   success: boolean = false;
+  errorSubmission: boolean = false;
+  successSubmission: boolean = false;
 
   ngOnInit(): void {
     this.questionnaireId = this.activatedRoute.snapshot.paramMap.get("id");
@@ -92,6 +98,19 @@ export class AnswerQuestionnaireComponent implements OnInit {
   getColor(): void {
     this.businessService.getColor(this.businessId).subscribe((response: HttpResponse<any>) => {
       this.color = response.body.color;
+    })
+  }
+
+  submit(): void {
+    this.errorSubmission = false;
+    this.successSubmission = false;
+    this.answerService.createAnswer(this.answers, this.questionnaireId).pipe(
+      catchError((err: any) => {
+        this.errorSubmission = true;
+        return throwError(err);
+      })
+    ).subscribe((response: HttpResponse<any>) => {
+      this.successSubmission = true;
     })
   }
 }

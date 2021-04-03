@@ -191,7 +191,6 @@
     font-family: $regular-font;
     font-size: 1rem;
     color: #262626;
-    width: 50%;
 }
 
 .questionnaire-responses {
@@ -202,6 +201,30 @@
 
 .questionnaire-responses-value {
     color: $primary;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+.answers-table {
+    margin-top: 1rem;
+}
+
+.short-cell {
+    width: 15%;
 }
 
 @media only screen and (max-width: 768px) {
