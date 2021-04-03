@@ -1,13 +1,33 @@
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+            <p class="description color-dropdown-description">Select brand color</p>
+            <div class="inline color-dropdown-inline">
+                <div class="color color-dropdown-option big-color" [style.background]="'#90d977'"></div>
+                <div class="color color-dropdown-option big-color" [style.background]="'#f2d639'"></div>
+                <div class="color color-dropdown-option big-color" [style.background]="'#d53939'"></div>
+            </div>
+            <div class="inline color-dropdown-inline">
+                <div class="color color-dropdown-option big-color" [style.background]="'#1f6cb0'"></div>
+                <div class="color color-dropdown-option big-color" [style.background]="'#ea9215'"></div>
+                <div class="color color-dropdown-option big-color" [style.background]="'#642ab6'"></div>
+            </div>
+            <button class="small-primary-button lightgrey-button" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+</div>
 <div *ngIf="loadPage">
     <div class="navbar-topbar">
         <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
-        <p class="primary-text" (click)="logOut()">Log out</p>
+        <p class="primary-text" (click)="logOut()" [style.color]="color">Log out</p>
     </div>
-    <div class="main-section">
+    <div class="main-section" *ngIf="business">
         <div class="inline">
             <p class="big-title">{{business.name}}</p>
             <div class="color-container">
-                <div class="color color-selector" [style.background]="business.color" (click)="showColorSelector = !showColorSelector"></div>
+                <div class="color color-selector" [style.background]="business.color" data-toggle="modal" data-target="#exampleModalCenter"></div>
                 <div class="color-dropdown" *ngIf="showColorSelector">
                     <p class="description color-dropdown-description">Select brand color</p>
                     <div class="inline color-dropdown-inline">
@@ -30,26 +50,26 @@
             <span class="description">{{business.phone}}</span>
         </div>
         <div class="info-container">
-            <i class="fas fa-info-circle"></i>
+            <i class="fas fa-info-circle" [style.color]="color"></i>
             <p class="description">If you have any questions, you can contact our support at <span class="important">support@uploy.app</span> or call <span class="important">+359 882 764 107</span></p>
         </div>
         <div class="data-container container">
             <div class="row">
                 <div class="col">
                     <div class="data">
-                        <p class="data-value">0</p>
+                        <p class="data-value" [style.color]="color">0</p>
                         <p class="data-title">responses in total</p>
                     </div>
                 </div>
                 <div class="col">
                     <div class="data">
-                        <p class="data-value">20</p>
+                        <p class="data-value" [style.color]="color">20</p>
                         <p class="data-title">responses last week</p>
                     </div>
                 </div>
                 <div class="col">
                     <div class="data">
-                        <p class="data-value">1</p>
+                        <p class="data-value" [style.color]="color">1</p>
                         <p class="data-title">questionnaire</p>
                     </div>
                 </div>
@@ -59,7 +79,7 @@
             <p class="min-section-title">Questionnaires</p>
             <div class="questionnaire">
                 <p class="questionnaire-title">Test</p>
-                <p class="questionnaire-responses"><span class="questionnaire-responses-value">20</span>&nbsp;responses</p>
+                <p class="questionnaire-responses"><span class="questionnaire-responses-value" [style.color]="color">20</span>&nbsp;responses</p>
             </div>
         </div>
     </div>

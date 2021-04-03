@@ -45,7 +45,7 @@ hr {
     height: 1px;
     width: 100%;
     border: none;
-    background-color: #e7e7e7;
+    background-color: #fafafa;
 }
 
 .error-text {
@@ -67,4 +67,10 @@ hr {
 
 .modal-input::placeholder {
     color: black;
+}
+
+@media only screen and (max-width: 768px) {
+    .modal-box {
+        width: 100%;
+    }
 }

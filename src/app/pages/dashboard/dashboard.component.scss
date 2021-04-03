@@ -43,11 +43,32 @@
     }
 }
 
+.big-color {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    margin-bottom: 0.75rem;
+}
+
 .color-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-dropdown-description {
+    text-align: center;
+    font-family: $bold-font;
+    font-size: 1.2rem;
+    color: #262626;
 }
 
 .color-dropdown {
@@ -60,7 +81,7 @@
     border-radius: 6px;
     width: max-content;
     position: absolute;
-    margin-left: 1rem;
+    margin-right: 20rem;
     z-index: 999;
     background-color: white;
     margin-top: 3rem;
@@ -86,7 +107,7 @@
     border-radius: 6px;
     box-shadow: 0px 0px 6px #e7e7e7;
     padding: 1rem 1.5rem;
-    width: max-content;
+    max-width: max-content;
     margin: 2rem 0rem;
 
     i {
@@ -181,4 +202,45 @@
 
 .questionnaire-responses-value {
     color: $primary;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar-topbar {
+        padding: 1rem 2rem;
+
+        .logo {
+            font-size: 1rem;
+        }
+        .product {
+            font-size: 0.75rem;
+        }
+        .primary-text {
+            font-size: 0.9rem;
+        }
+    }
+
+    .main-section {
+        padding: 3rem 2rem;
+    }
+
+    .big-title { 
+        font-size: 1.5rem;
+    }
+    
+    .info-container {
+        .description {
+            font-size: 0.7rem;
+        }
+    }
+
+    .data-container {
+        .data {
+            margin-right: 0px;
+        }
+    }
+
+    .questionnaire {
+        width: 100%;
+        max-width: 100%;
+    }
 }

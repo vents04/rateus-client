@@ -92,7 +92,6 @@ export class AnswerQuestionnaireComponent implements OnInit {
   getColor(): void {
     this.businessService.getColor(this.businessId).subscribe((response: HttpResponse<any>) => {
       this.color = response.body.color;
-      console.log(this.color);
     })
   }
 }
