@@ -1,0 +1,66 @@
+<div *ngIf="loadPage">
+    <div class="navbar-topbar">
+        <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
+        <p class="primary-text" (click)="logOut()">Log out</p>
+    </div>
+    <div class="main-section">
+        <div class="inline">
+            <p class="big-title">{{business.name}}</p>
+            <div class="color-container">
+                <div class="color color-selector" [style.background]="business.color" (click)="showColorSelector = !showColorSelector"></div>
+                <div class="color-dropdown" *ngIf="showColorSelector">
+                    <p class="description color-dropdown-description">Select brand color</p>
+                    <div class="inline color-dropdown-inline">
+                        <div class="color color-dropdown-option" [style.background]="'#90d977'"></div>
+                        <div class="color color-dropdown-option" [style.background]="'#f2d639'"></div>
+                        <div class="color color-dropdown-option" [style.background]="'#d53939'"></div>
+                    </div>
+                    <div class="inline color-dropdown-inline">
+                        <div class="color color-dropdown-option" [style.background]="'#1f6cb0'"></div>
+                        <div class="color color-dropdown-option" [style.background]="'#ea9215'"></div>
+                        <div class="color color-dropdown-option" [style.background]="'#642ab6'"></div>
+                    </div>
+                    <button class="small-primary-button lightgrey-button" (click)="showColorSelector = false">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div class="business-contacts">
+            <span class="description">{{business.email}}</span>
+            &nbsp;&middot;&nbsp;
+            <span class="description">{{business.phone}}</span>
+        </div>
+        <div class="info-container">
+            <i class="fas fa-info-circle"></i>
+            <p class="description">If you have any questions, you can contact our support at <span class="important">support@uploy.app</span> or call <span class="important">+359 882 764 107</span></p>
+        </div>
+        <div class="data-container container">
+            <div class="row">
+                <div class="col">
+                    <div class="data">
+                        <p class="data-value">{{business.totalReviews}}</p>
+                        <p class="data-title">responses in total</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="data">
+                        <p class="data-value">20</p>
+                        <p class="data-title">responses last week</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="data">
+                        <p class="data-value">1</p>
+                        <p class="data-title">questionnaire</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="min-section">
+            <p class="min-section-title">Questionnaires</p>
+            <div class="questionnaire">
+                <p class="questionnaire-title">Test</p>
+                <p class="questionnaire-responses"><span class="questionnaire-responses-value">20</span>&nbsp;responses</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -18,7 +18,6 @@
 }
 
 
-
 $logo-font: 'Logo', sans-serif;
 $bold-font: 'Montserrat Bold', sans-serif;
 $semi-bold-font: 'Montserrat SemiBold', sans-serif;
@@ -26,6 +25,14 @@ $regular-font: 'Montserrat Regular', sans-serif;
 
 $primary: #90d977;
 $error: #d53939;
+
+body {
+    margin: 0px;
+}
+
+p {
+    margin-bottom: 0px;
+}
 
 .centered-content {
     display: flex;
@@ -39,7 +46,6 @@ $error: #d53939;
     font-family: $regular-font;
     font-size: 0.9rem;
     color: gray;
-    margin-top: 1rem;
 }
 
 .small-description {
@@ -50,9 +56,9 @@ $error: #d53939;
     box-shadow: 0px 0px 6px #e7e7e7;
     border: 1px solid #e7e7e7;
     border-radius: 6px;
-    padding: 1.5rem 4rem;
-    min-width: 350px;
-    max-width: 350px;
+    padding: 2rem 4rem;
+    min-width: 450px;
+    max-width: 450px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -121,4 +127,37 @@ $error: #d53939;
     font-size: 1.5rem;
     color: black;
     text-align: center;
+}
+
+.small-primary-button {
+    background-color: $primary;
+    animation: backgroundAnimation 5s infinite;
+    color: white;
+    font-family: $semi-bold-font;
+    font-size: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 3px;
+    border: none;
+    width: 100%;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.lightgrey-button {
+    background-color: #eaeaea;
+    color: #262626;
+}
+
+.important {
+    font-family: $semi-bold-font;
+}
+
+.description {
+    margin: 1rem 0rem;
 }

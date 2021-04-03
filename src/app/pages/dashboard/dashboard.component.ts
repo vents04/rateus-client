@@ -1,9 +1,10 @@
 import { HttpResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { BusinessService } from 'src/app/services/business-service/business.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,10 +13,14 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private businessService: BusinessService, private router: Router) { }
 
   authenticated: boolean = false;
   loadPage: boolean = false;
+
+  business: any = null;
+
+  showColorSelector : boolean = false;
 
   ngOnInit(): void {
     this.checkToken();
@@ -31,7 +36,24 @@ export class DashboardComponent implements OnInit {
       this.authenticated = response.body.valid;
       if(!this.authenticated) this.router.navigate(['/']);
       this.loadPage = true;
+      this.getBusiness();
     })
   }
 
+  logOut(): void {
+    this.authService.removeSession();
+    this.router.navigate(['/']);
+  }
+
+  getBusiness(): void {
+    this.businessService.getBusiness().pipe(
+      catchError((err: any) => {
+        return throwError(err);
+      })
+    ).subscribe((response: HttpResponse<any>) => {
+      this.business = response.body.business;
+    })
+  }
+
+  
 }

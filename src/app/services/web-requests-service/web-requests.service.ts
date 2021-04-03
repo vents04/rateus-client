@@ -18,12 +18,17 @@ export class WebRequestsService {
   apply(address: string, emailOrPhone: string) {
     return this.http.post(`${ROOT_URL}/waitlist/`,
     { emailOrPhone: emailOrPhone, address: address },
-    { observe: 'response', responseType: 'json'});
+    { observe: 'response', responseType: 'json' });
   }
 
   checkToken() {
     return this.http.post(`${ROOT_URL}/business/check-token`,
     {},
+    { observe: 'response', responseType: 'json' });
+  }
+
+  getBusiness() {
+    return this.http.get(`${ROOT_URL}/business`,
     { observe: 'response', responseType: 'json' });
   }
 }
