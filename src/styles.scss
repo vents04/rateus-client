@@ -25,6 +25,7 @@ $semi-bold-font: 'Montserrat SemiBold', sans-serif;
 $regular-font: 'Montserrat Regular', sans-serif;
 
 $primary: #90d977;
+$error: #d53939;
 
 .centered-content {
     display: flex;
@@ -97,7 +98,27 @@ $primary: #90d977;
     }
 }
 
+.primary-text {
+    font-family: $semi-bold-font;
+    font-size: 1rem;
+    color: $primary;
+
+    &:hover {
+        cursor: pointer;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
 .grey-button {
     background-color: #e7e7e7;
     color: #262626;
+}
+
+.page-title {
+    font-family: $bold-font;
+    font-size: 1.5rem;
+    color: black;
+    text-align: center;
 }

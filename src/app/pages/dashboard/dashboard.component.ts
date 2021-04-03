@@ -6,11 +6,11 @@ import { catchError } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class DashboardComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
       })
     ).subscribe((response: HttpResponse<any>) => {
       this.authenticated = response.body.valid;
-      if(this.authenticated) this.router.navigate(['/dashboard']);
+      if(!this.authenticated) this.router.navigate(['/']);
       this.loadPage = true;
     })
   }

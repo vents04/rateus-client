@@ -1,6 +1,8 @@
 <div class="centered-content">
     <div class="modal-box fadeInBottom">
         <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
+        <hr>
+        <p class="page-title">Apply</p>
         <div class="modal-inputs">
             <div class="modal-input-container">
                 <p class="modal-input-title">Address</p>
@@ -14,5 +16,6 @@
         <p class="description small-description">When you submit your application a person from our team will contact you to tailor the best solution for you and your business.</p>
         <button class="primary-button" (click)="apply(addressEl.value, emailOrPhoneEl.value)">Submit</button>
         <p class="success-text" *ngIf="success">Successfully submitted! You will be redirected to home.</p>
+        <p class="error-text" *ngIf="error">There was an error submitting your application. Please try again or call us on +359 882 764 107</p>
     </div>
 </div>

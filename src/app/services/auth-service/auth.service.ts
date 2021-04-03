@@ -30,4 +30,8 @@ export class AuthService {
     localStorage.removeItem("x-auth-token");
   }
 
+  checkToken() {
+    return this.webService.checkToken();
+  }
+
 }

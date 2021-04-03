@@ -9,9 +9,9 @@ export class WebRequestsService {
 
   constructor(private http: HttpClient) { }
 
-  login(emailOrPhone: string, password: string) {
+  login(email: string, password: string) {
     return this.http.post(`${ROOT_URL}/business/login`, 
-    { emailOrPhone: emailOrPhone, password: password }, 
+    { email: email, password: password }, 
     { observe: 'response', responseType: 'json' });
   }
 
@@ -19,5 +19,11 @@ export class WebRequestsService {
     return this.http.post(`${ROOT_URL}/waitlist/`,
     { emailOrPhone: emailOrPhone, address: address },
     { observe: 'response', responseType: 'json'});
+  }
+
+  checkToken() {
+    return this.http.post(`${ROOT_URL}/business/check-token`,
+    {},
+    { observe: 'response', responseType: 'json' });
   }
 }

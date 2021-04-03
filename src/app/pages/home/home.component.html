@@ -1,7 +1,8 @@
-<div class="centered-content">
+<div class="centered-content" *ngIf="loadPage">
     <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
     <p class="beta">BETA</p>
     <p class="slogan fadeInBottom">Get clients' feedback right in your store.</p>
     <button class="primary-button" routerLink="/apply">Apply</button>
     <p class="description">or ask your questions to support@uploy.app</p>
+    <p class="primary-text" routerLink="/login" *ngIf="!authenticated">Log in your Uploy account</p>
 </div>

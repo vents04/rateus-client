@@ -9,6 +9,8 @@ import { ApplyComponent } from './pages/apply/apply.component';
 import { EditQuestionnaireComponent } from './pages/edit-questionnaire/edit-questionnaire.component';
 import { WebReqInterceptor } from './web-req.interceptor';
 import { AnswerQuestionnaireComponent } from './pages/answer-questionnaire/answer-questionnaire.component';
+import { LoginComponent } from './pages/login/login.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { AnswerQuestionnaireComponent } from './pages/answer-questionnaire/answe
     ApplyComponent,
     EditQuestionnaireComponent,
     AnswerQuestionnaireComponent,
+    LoginComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

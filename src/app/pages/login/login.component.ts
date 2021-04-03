@@ -1,4 +1,5 @@
 import { HttpResponse } from '@angular/common/http';
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
@@ -6,31 +7,29 @@ import { catchError } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  authenticated: boolean = false;
-  loadPage: boolean = false;
+  error: boolean = false;
+  errorMessage: string = null;
 
   ngOnInit(): void {
-    this.checkToken();
   }
 
-  checkToken(): void {
-    this.authService.checkToken().pipe(
+  login(email: string, password: string): void {
+    this.authService.login(email, password).pipe(
       catchError((err: any) => {
-        this.loadPage = true;
+        this.error = true;
+        this.errorMessage = err.error;
         return throwError(err);
       })
     ).subscribe((response: HttpResponse<any>) => {
-      this.authenticated = response.body.valid;
-      if(this.authenticated) this.router.navigate(['/dashboard']);
-      this.loadPage = true;
+      this.router.navigate(['/dashboard']);
     })
   }
 

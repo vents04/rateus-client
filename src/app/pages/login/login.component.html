@@ -1,0 +1,19 @@
+<div class="centered-content">
+    <div class="modal-box fadeInBottom">
+        <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
+        <hr>
+        <p class="page-title">Login</p>
+        <div class="modal-inputs">
+            <div class="modal-input-container">
+                <p class="modal-input-title">Email</p>
+                <input type="text" class="modal-input" placeholder="Click here to type" #emailEl>
+            </div>
+            <div class="modal-input-container">
+                <p class="modal-input-title">Password</p>
+                <input type="password" class="modal-input" placeholder="Click here to type" #passwordEl>
+            </div>
+        </div>
+        <button class="primary-button" (click)="login(emailEl.value, passwordEl.value)">Continue</button>
+        <p class="error-text" *ngIf="error">{{errorMessage}}</p>
+    </div>
+</div>
