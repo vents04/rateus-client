@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { LanguageService } from 'src/app/services/language-service/language.service';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,18 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private languageService: LanguageService) { }
 
   error: boolean = false;
   errorMessage: string = null;
 
+  showLanguageSelector: boolean = false;
+  language: string = undefined;
+  languageData: any = undefined;
+
   ngOnInit(): void {
+    this.getLanguage();
+    this.getLanguageData();
   }
 
   login(email: string, password: string): void {
@@ -30,6 +37,23 @@ export class LoginComponent implements OnInit {
       })
     ).subscribe((response: HttpResponse<any>) => {
       this.router.navigate(['/dashboard']);
+    })
+  }
+
+  updateLanguage(language: string): void {
+    this.languageService.updateLanguage(language);
+    this.showLanguageSelector = false;
+    this.getLanguage();
+    window.location.reload();
+  }
+
+  getLanguage(): void {
+    this.language = this.languageService.getLanguage();
+  }
+
+  getLanguageData(): void {
+    this.languageService.getLanguageData('login').subscribe((response: HttpResponse<any>) => {
+      this.languageData = response.body.languageData;
     })
   }
 

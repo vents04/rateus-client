@@ -1,110 +1,110 @@
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-            <p class="description color-dropdown-description">Select brand color</p>
-            <div class="inline color-dropdown-inline">
-                <div class="color color-dropdown-option big-color" [style.background]="'#90d977'" (click)="updateColor('#90d977')"></div>
-                <div class="color color-dropdown-option big-color" [style.background]="'#f2d639'" (click)="updateColor('#f2d639')"></div>
-                <div class="color color-dropdown-option big-color" [style.background]="'#d53939'" (click)="updateColor('#d53939')"></div>
+<div *ngIf="languageData">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+                <p class="description color-dropdown-description">{{languageData.colorDropdown.title}}</p>
+                <div class="inline color-dropdown-inline">
+                    <div class="color color-dropdown-option big-color" [style.background]="'#90d977'" (click)="updateColor('#90d977')"></div>
+                    <div class="color color-dropdown-option big-color" [style.background]="'#f2d639'" (click)="updateColor('#f2d639')"></div>
+                    <div class="color color-dropdown-option big-color" [style.background]="'#d53939'" (click)="updateColor('#d53939')"></div>
+                </div>
+                <div class="inline color-dropdown-inline">
+                    <div class="color color-dropdown-option big-color" [style.background]="'#1f6cb0'" (click)="updateColor('#1f6cb0')"></div>
+                    <div class="color color-dropdown-option big-color" [style.background]="'#ea9215'" (click)="updateColor('#ea9215')"></div>
+                    <div class="color color-dropdown-option big-color" [style.background]="'#642ab6'" (click)="updateColor('#642ab6')"></div>
+                </div>
+                <p class="description" style="text-align: center">{{languageData.colorDropdown.description}}</p>
+                <button class="small-primary-button lightgrey-button" data-dismiss="modal">{{languageData.colorDropdown.cancelButton}}</button>
             </div>
-            <div class="inline color-dropdown-inline">
-                <div class="color color-dropdown-option big-color" [style.background]="'#1f6cb0'" (click)="updateColor('#1f6cb0')"></div>
-                <div class="color color-dropdown-option big-color" [style.background]="'#ea9215'" (click)="updateColor('#ea9215')"></div>
-                <div class="color color-dropdown-option big-color" [style.background]="'#642ab6'" (click)="updateColor('#642ab6')"></div>
-            </div>
-            <p class="description" style="text-align: center">When people answer your questionnaires the page will have this brand color on all elements where it should be placed.</p>
-            <button class="small-primary-button lightgrey-button" data-dismiss="modal">Cancel</button>
+          </div>
         </div>
-      </div>
     </div>
-</div>
-<div *ngIf="loadPage">
-    <div class="navbar-topbar">
-        <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
-        <p class="primary-text" (click)="logOut()" [style.color]="color">Log out</p>
-    </div>
-    <div class="main-section" *ngIf="business">
-        <div class="inline">
-            <p class="big-title">{{business.name}}</p>
-            <div class="color-container">
-                <div class="color color-selector" [style.background]="business.color" data-toggle="modal" data-target="#exampleModalCenter"></div>
-                <div class="color-dropdown" *ngIf="showColorSelector">
-                    <p class="description color-dropdown-description">Select brand color</p>
-                    <div class="inline color-dropdown-inline">
-                        <div class="color color-dropdown-option" [style.background]="'#90d977'"></div>
-                        <div class="color color-dropdown-option" [style.background]="'#f2d639'"></div>
-                        <div class="color color-dropdown-option" [style.background]="'#d53939'"></div>
-                    </div>
-                    <div class="inline color-dropdown-inline">
-                        <div class="color color-dropdown-option" [style.background]="'#1f6cb0'"></div>
-                        <div class="color color-dropdown-option" [style.background]="'#ea9215'"></div>
-                        <div class="color color-dropdown-option" [style.background]="'#642ab6'"></div>
-                    </div>
-                    <button class="small-primary-button lightgrey-button" (click)="showColorSelector = false">Cancel</button>
-                </div>
+    <div *ngIf="loadPage">
+        <div class="navbar-topbar">
+            <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
+            <p class="primary-text" (click)="logOut()" [style.color]="color">{{languageData.logOutButton}}</p>
+        </div>
+        <div class="language-changer">
+            <div class="language-changer-topbar" (click)="showLanguageSelector = !showLanguageSelector">
+                <p class="description">{{language}}</p>
+                <i class="fas fa-sort-down"></i>
+            </div>
+            <div class="language-changer-dropdown" *ngIf="showLanguageSelector">
+                <p class="language-changer-title">{{languageData.dropdownTitle}}</p>
+                <p class="language-changer-language" (click)="updateLanguage('BG')">Български (BG)</p>
+                <p class="language-changer-language" (click)="updateLanguage('EN')">English (EN)</p>
+                <button class="small-primary-button lightgrey-button" (click)="showLanguageSelector = false">{{languageData.cancelButton}}</button>
             </div>
         </div>
-        <div class="business-contacts">
-            <span class="description">{{business.email}}</span>
-            &nbsp;&middot;&nbsp;
-            <span class="description">{{business.phone}}</span>
-        </div>
-        <div class="info-container">
-            <i class="fas fa-info-circle" [style.color]="color"></i>
-            <p class="description">If you have any questions, you can contact our support at <span class="important">support@uploy.app</span> or call <span class="important">+359 882 764 107</span></p>
-        </div>
-        <div class="data-container container" *ngIf="dashboard">
-            <div class="row">
-                <div class="col">
-                    <div class="data">
-                        <p class="data-value" [style.color]="color">{{dashboard.totalResponses}}</p>
-                        <p class="data-title">responses in total</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="data">
-                        <p class="data-value" [style.color]="color">{{dashboard.lastWeekResponses}}</p>
-                        <p class="data-title">responses last week</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="data">
-                        <p class="data-value" [style.color]="color">{{dashboard.questionnairesCount}}</p>
-                        <p class="data-title">questionnaire</p>
-                    </div>
+        <div class="main-section" *ngIf="business">
+            <div class="inline">
+                <p class="big-title">{{business.name}}</p>
+                <div class="color-container">
+                    <div class="color color-selector" [style.background]="business.color" data-toggle="modal" data-target="#exampleModalCenter"></div>
                 </div>
             </div>
-        </div>
-        <div class="min-section" *ngIf="dashboard">
-            <p class="min-section-title">Questionnaires</p>
-            <div class="questionnaire" *ngFor="let questionnaire of dashboard.questionnaires" id="{{questionnaire._id}}" #questionnaireEl (click)="selectedQuestionnaire = questionnaire; showAnswers = !showAnswers; getAnswers()">
-                <p class="questionnaire-title">{{questionnaire.title}}
-                    &nbsp;&middot;&nbsp;
-                    <span class="primary-text" (click)="redirectToQuestionnaire(questionnaireEl.id)" [style.color]="color">Edit</span>
-                </p>
-                <p class="questionnaire-responses"><span class="questionnaire-responses-value" [style.color]="color">{{questionnaire.responses}}</span>&nbsp;responses</p>
-            </div>
-        </div>
-        <div class="min-section" *ngIf="showAnswers">
-            <p class="min-section-title">Answers to {{selectedQuestionnaire.title}}
+            <div class="business-contacts">
+                <span class="description">{{business.email}}</span>
                 &nbsp;&middot;&nbsp;
-                <span class="primary-text" (click)="showAnswers = false" [style.color]="color">Close answers</span>
-            </p>
-            <p class="answers-warning">We recommend previewing the answers on a larger screen.</p>
-            <div class="answers-table" *ngIf="selectedQuestionnaire.questions && selectedQuestionnaire.questionsCount">
-                <table>
-                    <tr>
-                        <th class="short-cell">№</th>
-                        <th>Date and time</th>
-                        <th *ngFor="let question of counter(selectedQuestionnaire.questionsCount); let i = index">{{selectedQuestionnaire.questions[i].title}}</th>
-                    </tr>
-                    <tr *ngFor="let answer of selectedQuestionnaire.answers; let i = index">
-                        <td>{{i+1}}</td>
-                        <td>{{answer.dt}}</td>
-                        <td *ngFor="let question of counter(selectedQuestionnaire.questionsCount); let j = index">{{answer.answers[j].answer || null}}</td>
-                    </tr>
-                </table>
+                <span class="description">{{business.phone}}</span>
+            </div>
+            <div class="info-container">
+                <i class="fas fa-info-circle" [style.color]="color"></i>
+                <p class="description">{{languageData.info[0]}} <span class="important">{{languageData.info[1]}}</span> {{languageData.info[2]}} <span class="important">{{languageData.info[3]}}</span></p>
+            </div>
+            <div class="data-container container" *ngIf="dashboard">
+                <div class="row">
+                    <div class="col">
+                        <div class="data">
+                            <p class="data-value" [style.color]="color">{{dashboard.totalResponses}}</p>
+                            <p class="data-title">{{languageData.stats[0].title}}</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="data">
+                            <p class="data-value" [style.color]="color">{{dashboard.lastWeekResponses}}</p>
+                            <p class="data-title">{{languageData.stats[1].title}}</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="data">
+                            <p class="data-value" [style.color]="color">{{dashboard.questionnairesCount}}</p>
+                            <p class="data-title">{{languageData.stats[2].title}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="min-section" *ngIf="dashboard">
+                <p class="min-section-title">{{languageData.questionnaires.title}}</p>
+                <div class="questionnaire" *ngFor="let questionnaire of dashboard.questionnaires" id="{{questionnaire._id}}" #questionnaireEl (click)="selectedQuestionnaire = questionnaire; showAnswers = !showAnswers; getAnswers()">
+                    <p class="questionnaire-title">{{questionnaire.title}}
+                        &nbsp;&middot;&nbsp;
+                        <span class="primary-text" (click)="redirectToQuestionnaire(questionnaireEl.id)" [style.color]="color">{{languageData.questionnaires.editButton}}</span>
+                    </p>
+                    <p class="questionnaire-responses"><span class="questionnaire-responses-value" [style.color]="color">{{questionnaire.responses}}</span>&nbsp;{{languageData.questionnaires.responses}}</p>
+                </div>
+            </div>
+            <div class="min-section" *ngIf="showAnswers">
+                <p class="min-section-title">{{languageData.answers.title}} {{selectedQuestionnaire.title}}
+                    &nbsp;&middot;&nbsp;
+                    <span class="primary-text" (click)="showAnswers = false" [style.color]="color">{{languageData.answers.closeAnswersButton}}</span>
+                </p>
+                <p class="answers-warning">{{languageData.warning}}</p>
+                <div class="answers-table" *ngIf="selectedQuestionnaire.questions && selectedQuestionnaire.questionsCount">
+                    <table>
+                        <tr>
+                            <th class="short-cell">{{languageData.answers.table[0]}}</th>
+                            <th>{{languageData.answers.table[1]}}</th>
+                            <th *ngFor="let question of counter(selectedQuestionnaire.questionsCount); let i = index">{{selectedQuestionnaire.questions[i].title}}</th>
+                        </tr>
+                        <tr *ngFor="let answer of selectedQuestionnaire.answers; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{answer.dt}}</td>
+                            <td *ngFor="let question of counter(selectedQuestionnaire.questionsCount); let j = index">{{answer.answers[j].answer || null}}</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

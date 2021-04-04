@@ -1,19 +1,33 @@
-<div class="centered-content">
-    <div class="modal-box fadeInBottom">
-        <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
-        <hr>
-        <p class="page-title">Login</p>
-        <div class="modal-inputs">
-            <div class="modal-input-container">
-                <p class="modal-input-title">Email</p>
-                <input type="text" class="modal-input" placeholder="Click here to type" #emailEl>
-            </div>
-            <div class="modal-input-container">
-                <p class="modal-input-title">Password</p>
-                <input type="password" class="modal-input" placeholder="Click here to type" #passwordEl>
-            </div>
+<div *ngIf="languageData">
+    <div class="language-changer">
+        <div class="language-changer-topbar" (click)="showLanguageSelector = !showLanguageSelector">
+            <p class="description">{{language}}</p>
+            <i class="fas fa-sort-down"></i>
         </div>
-        <button class="primary-button" (click)="login(emailEl.value, passwordEl.value)">Continue</button>
-        <p class="error-text" *ngIf="error">{{errorMessage}}</p>
+        <div class="language-changer-dropdown" *ngIf="showLanguageSelector">
+            <p class="language-changer-title">{{languageData.dropdownTitle}}</p>
+            <p class="language-changer-language" (click)="updateLanguage('BG')">Български (BG)</p>
+            <p class="language-changer-language" (click)="updateLanguage('EN')">English (EN)</p>
+            <button class="small-primary-button lightgrey-button" (click)="showLanguageSelector = false">{{languageData.cancelButton}}</button>
+        </div>
+    </div>
+    <div class="centered-content">
+        <div class="modal-box fadeInBottom">
+            <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
+            <hr>
+            <p class="page-title">{{languageData.title}}</p>
+            <div class="modal-inputs">
+                <div class="modal-input-container">
+                    <p class="modal-input-title">{{languageData.inputs[0].title}}</p>
+                    <input type="text" class="modal-input" placeholder="{{languageData.inputs[0].placeholder}}" #emailEl>
+                </div>
+                <div class="modal-input-container">
+                    <p class="modal-input-title">{{languageData.inputs[1].title}}</p>
+                    <input type="password" class="modal-input" placeholder="{{languageData.inputs[1].placeholder}}" #passwordEl>
+                </div>
+            </div>
+            <button class="primary-button" (click)="login(emailEl.value, passwordEl.value)">{{languageData.continueButton}}</button>
+            <p class="error-text" *ngIf="error">{{errorMessage}}</p>
+        </div>
     </div>
 </div>

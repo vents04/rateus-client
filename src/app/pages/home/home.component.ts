@@ -17,13 +17,16 @@ export class HomeComponent implements OnInit {
 
   authenticated: boolean = false;
   loadPage: boolean = false;
+
   language: string = undefined;
+  languageData: any = undefined;
 
   showLanguageSelector: boolean = false;
 
   ngOnInit(): void {
     this.checkToken();
     this.getLanguage();
+    this.getLanguageData();
   }
 
   checkToken(): void {
@@ -43,10 +46,17 @@ export class HomeComponent implements OnInit {
     this.languageService.updateLanguage(language);
     this.showLanguageSelector = false;
     this.getLanguage();
+    window.location.reload();
   }
 
   getLanguage(): void {
     this.language = this.languageService.getLanguage();
+  }
+
+  getLanguageData(): void {
+    this.languageService.getLanguageData('home').subscribe((response: HttpResponse<any>) => {
+      this.languageData = response.body.languageData;
+    })
   }
 
 }

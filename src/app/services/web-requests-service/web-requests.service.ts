@@ -69,5 +69,10 @@ export class WebRequestsService {
     return this.http.get(`${ROOT_URL}/answer/by-questionnaire-id/${questionnaireId}`,
     { observe: 'response', responseType: 'json' });
   }
+
+  getLanguageData(language: string, page: string) {
+    return this.http.get(`${ROOT_URL}/language/${language}/${page}`,
+    { observe: 'response', responseType: 'json' });
+  }
 }
 

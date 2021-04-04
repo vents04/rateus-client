@@ -6,6 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { AnswerService } from 'src/app/services/answer-service/answer.service';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { BusinessService } from 'src/app/services/business-service/business.service';
+import { LanguageService } from 'src/app/services/language-service/language.service';
 import { QuestionnaireService } from 'src/app/services/questionnaire-service/questionnaire.service';
 
 @Component({
@@ -19,7 +20,8 @@ export class DashboardComponent implements OnInit {
               private businessService: BusinessService, 
               private router: Router, 
               private answerService: AnswerService,
-              private questionnaireService: QuestionnaireService) { }
+              private questionnaireService: QuestionnaireService,
+              private languageService: LanguageService) { }
 
   authenticated: boolean = false;
   loadPage: boolean = false;
@@ -31,6 +33,10 @@ export class DashboardComponent implements OnInit {
 
   showColorSelector : boolean = false;
   showAnswers: boolean = false;
+
+  showLanguageSelector: boolean = false;
+  language: string = undefined;
+  languageData: any = undefined;
 
   ngOnInit(): void {
     this.checkToken();
@@ -47,6 +53,8 @@ export class DashboardComponent implements OnInit {
       if(!this.authenticated) this.router.navigate(['/']);
       this.loadPage = true;
       this.getBusiness();
+      this.getLanguage();
+      this.getLanguageData();
     })
   }
 
@@ -117,5 +125,22 @@ export class DashboardComponent implements OnInit {
 
   counter(i: number) {
     return new Array(i);
+  }
+
+  updateLanguage(language: string): void {
+    this.languageService.updateLanguage(language);
+    this.showLanguageSelector = false;
+    this.getLanguage();
+    window.location.reload();
+  }
+
+  getLanguage(): void {
+    this.language = this.languageService.getLanguage();
+  }
+
+  getLanguageData(): void {
+    this.languageService.getLanguageData('dashboard').subscribe((response: HttpResponse<any>) => {
+      this.languageData = response.body.languageData;
+    })
   }
 }

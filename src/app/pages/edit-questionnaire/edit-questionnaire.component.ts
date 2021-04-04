@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { BusinessService } from 'src/app/services/business-service/business.service';
+import { LanguageService } from 'src/app/services/language-service/language.service';
 import { QuestionnaireService } from 'src/app/services/questionnaire-service/questionnaire.service';
 
 @Component({
@@ -13,7 +14,11 @@ import { QuestionnaireService } from 'src/app/services/questionnaire-service/que
 })
 export class EditQuestionnaireComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private questionnaireService: QuestionnaireService, private businessService: BusinessService) { }
+  constructor(private activatedRoute: ActivatedRoute, 
+              private router: Router, 
+              private questionnaireService: QuestionnaireService, 
+              private businessService: BusinessService,
+              private languageService: LanguageService) { }
 
   questionnaireId: string = undefined;
   questionnaireTitle: string = undefined;
@@ -33,6 +38,10 @@ export class EditQuestionnaireComponent implements OnInit {
 
   errorUpdate: boolean = false;
   successUpdate: boolean = false;
+
+  showLanguageSelector: boolean = false;
+  language: string = undefined;
+  languageData: any = undefined;
 
   ngOnInit(): void {
     this.questionnaireId = this.activatedRoute.snapshot.paramMap.get("id");
@@ -73,6 +82,9 @@ export class EditQuestionnaireComponent implements OnInit {
         this.questions = response.body.questionnaire.questions;
         this.questionnaireTitle = response.body.questionnaire.title;
         this.businessId = response.body.questionnaire.businessId;
+
+        this.getLanguage();
+        this.getLanguageData();
       } else {
         this.error = true;
       }
@@ -98,5 +110,22 @@ export class EditQuestionnaireComponent implements OnInit {
         window.location.reload();
       }, 4000);
     }) 
+  }
+
+  updateLanguage(language: string): void {
+    this.languageService.updateLanguage(language);
+    this.showLanguageSelector = false;
+    this.getLanguage();
+    window.location.reload();
+  }
+
+  getLanguage(): void {
+    this.language = this.languageService.getLanguage();
+  }
+
+  getLanguageData(): void {
+    this.languageService.getLanguageData('edit-questionnaire').subscribe((response: HttpResponse<any>) => {
+      this.languageData = response.body.languageData;
+    })
   }
 }

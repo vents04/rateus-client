@@ -5,6 +5,7 @@ import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AnswerService } from 'src/app/services/answer-service/answer.service';
 import { BusinessService } from 'src/app/services/business-service/business.service';
+import { LanguageService } from 'src/app/services/language-service/language.service';
 import { QuestionnaireService } from 'src/app/services/questionnaire-service/questionnaire.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class AnswerQuestionnaireComponent implements OnInit {
   constructor(private questionnaireService: QuestionnaireService, 
               private businessService: BusinessService, 
               private activatedRoute: ActivatedRoute,
-              private answerService: AnswerService) { }
+              private answerService: AnswerService,
+              private languageService: LanguageService) { }
 
   questionnaireId: string = undefined;
   questionnaireTitle: string = undefined;
@@ -45,6 +47,10 @@ export class AnswerQuestionnaireComponent implements OnInit {
   success: boolean = false;
   errorSubmission: boolean = false;
   successSubmission: boolean = false;
+
+  showLanguageSelector: boolean = false;
+  language: string = undefined;
+  languageData: any = undefined;
 
   ngOnInit(): void {
     this.questionnaireId = this.activatedRoute.snapshot.paramMap.get("id");
@@ -89,6 +95,8 @@ export class AnswerQuestionnaireComponent implements OnInit {
         }
 
         this.getColor();
+        this.getLanguage();
+        this.getLanguageData();
       } else {
         this.error = true;
       }
@@ -111,6 +119,23 @@ export class AnswerQuestionnaireComponent implements OnInit {
       })
     ).subscribe((response: HttpResponse<any>) => {
       this.successSubmission = true;
+    })
+  }
+
+  updateLanguage(language: string): void {
+    this.languageService.updateLanguage(language);
+    this.showLanguageSelector = false;
+    this.getLanguage();
+    window.location.reload();
+  }
+
+  getLanguage(): void {
+    this.language = this.languageService.getLanguage();
+  }
+
+  getLanguageData(): void {
+    this.languageService.getLanguageData('answer-questionnaire').subscribe((response: HttpResponse<any>) => {
+      this.languageData = response.body.languageData;
     })
   }
 }
