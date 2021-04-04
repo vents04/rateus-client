@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         this.errorMessage = err.error;
         if(this.errorMessage == "The email or phone or password is wrong" && this.language == "BG") {
           this.errorMessage = "Грешен имейл или парола"
-        } else if(this.errorMessage == "There is not an account with the provided email address") {
+        } else if(this.errorMessage == "There is not an account with the provided email address" && this.language == "BG") {
           this.errorMessage = "Не беше намерен бизнес акаунт с този имейл"
         }
         return throwError(err);
