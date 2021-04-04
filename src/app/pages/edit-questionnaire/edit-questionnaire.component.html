@@ -34,8 +34,8 @@
                 <input class="question-input" type="text" placeholder="Type here..." #questionEl value="{{questions[currentQuestion].title}}" (input)="updateQuestion(questionEl.value, inputEl.value)"/>
                 <p class="question-title">{{languageData.inputs[2].title}}</p>
                 <select class="question-input" #inputEl (input)="updateQuestion(questionEl.value, inputEl.value)">
-                    <option value="0" [selected]="questions[currentQuestion].input == 0">{{languageData.inputs[2].options[0].title}}</option>
-                    <option value="1" [selected]="questions[currentQuestion].input == 1">{{languageData.inputs[2].options[1].title}}</option>
+                    <option value="0" [selected]="questions[currentQuestion].input == 0">{{languageData.inputs[2].options[1].title}}</option>
+                    <option value="1" [selected]="questions[currentQuestion].input == 1">{{languageData.inputs[2].options[0].title}}</option>
                 </select>
             </div>
             <button class="primary-button grey-button" (click)="deleteQuestion()">{{languageData.deleteQuestionButton}}</button>
