@@ -6,6 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { AnswerService } from 'src/app/services/answer-service/answer.service';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { BusinessService } from 'src/app/services/business-service/business.service';
+import { QuestionnaireService } from 'src/app/services/questionnaire-service/questionnaire.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +15,11 @@ import { BusinessService } from 'src/app/services/business-service/business.serv
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private authService: AuthService, private businessService: BusinessService, private router: Router, private answerService: AnswerService) { }
+  constructor(private authService: AuthService, 
+              private businessService: BusinessService, 
+              private router: Router, 
+              private answerService: AnswerService,
+              private questionnaireService: QuestionnaireService) { }
 
   authenticated: boolean = false;
   loadPage: boolean = false;
@@ -92,6 +97,21 @@ export class DashboardComponent implements OnInit {
     ).subscribe((response: HttpResponse<any>) => {
       this.selectedQuestionnaire.answers = response.body.answers;
       this.selectedQuestionnaire.questionsCount = response.body.questionsCount;
+      this.getQuestionnaire();
+      
+      for(let answer of this.selectedQuestionnaire.answers) {
+        answer.dt = new Date(answer.dt).toLocaleString();
+      }
+    })
+  }
+
+  getQuestionnaire(): void {
+    this.questionnaireService.getQuestionnaire(this.selectedQuestionnaire._id).pipe(
+      catchError((err: any) => {
+        return throwError(err);
+      })
+    ).subscribe((response: HttpResponse<any>) => {
+      this.selectedQuestionnaire.questions = response.body.questionnaire.questions;
     })
   }
 

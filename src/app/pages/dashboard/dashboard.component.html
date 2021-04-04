@@ -80,7 +80,7 @@
             <div class="questionnaire" *ngFor="let questionnaire of dashboard.questionnaires" id="{{questionnaire._id}}" #questionnaireEl (click)="selectedQuestionnaire = questionnaire; showAnswers = !showAnswers; getAnswers()">
                 <p class="questionnaire-title">{{questionnaire.title}}
                     &nbsp;&middot;&nbsp;
-                    <span class="primary-text" (click)="redirectToQuestionnaire(questionnaireEl.id)">Edit</span>
+                    <span class="primary-text" (click)="redirectToQuestionnaire(questionnaireEl.id)" [style.color]="color">Edit</span>
                 </p>
                 <p class="questionnaire-responses"><span class="questionnaire-responses-value" [style.color]="color">{{questionnaire.responses}}</span>&nbsp;responses</p>
             </div>
@@ -88,13 +88,20 @@
         <div class="min-section" *ngIf="showAnswers">
             <p class="min-section-title">Answers to {{selectedQuestionnaire.title}}
                 &nbsp;&middot;&nbsp;
-                <span class="primary-text" (click)="showAnswers = false">Close answers</span>
+                <span class="primary-text" (click)="showAnswers = false" [style.color]="color">Close answers</span>
             </p>
-            <div class="answers-table">
+            <p class="answers-warning">We recommend previewing the answers on a larger screen.</p>
+            <div class="answers-table" *ngIf="selectedQuestionnaire.questions && selectedQuestionnaire.questionsCount">
                 <table>
                     <tr>
                         <th class="short-cell">№</th>
-                        <th *ngFor="let question of counter(selectedQuestionnaire.questionsCount); let i = index">{{i+1}}</th>
+                        <th>Date and time</th>
+                        <th *ngFor="let question of counter(selectedQuestionnaire.questionsCount); let i = index">{{selectedQuestionnaire.questions[i].title}}</th>
+                    </tr>
+                    <tr *ngFor="let answer of selectedQuestionnaire.answers; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{answer.dt}}</td>
+                        <td *ngFor="let question of counter(selectedQuestionnaire.questionsCount); let j = index">{{answer.answers[j].answer || null}}</td>
                     </tr>
                 </table>
             </div>

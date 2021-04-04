@@ -204,27 +204,34 @@
 }
 
 table {
-    font-family: arial, sans-serif;
+    font-family: $regular-font;
     border-collapse: collapse;
-    width: 50%;
+    width: 75%;
   }
   
+th {
+    font-family: $bold-font;
+}
   td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
   }
   
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
 
 .answers-table {
     margin-top: 1rem;
 }
 
 .short-cell {
-    width: 15%;
+    width: 10%;
+}
+
+.answers-warning {
+    font-family: $regular-font;
+    font-size: 1rem;
+    color: #262626;
+    display: none;
 }
 
 @media only screen and (max-width: 768px) {
@@ -255,6 +262,14 @@ table {
             font-size: 0.7rem;
         }
     }
+    .questionnaire {
+        flex-direction: column;
+        align-items: flex-start;
+        
+        .questionnaire-responses {
+            margin-top: 1rem;
+        }
+    }
 
     .data-container {
         .data {
@@ -265,5 +280,11 @@ table {
     .questionnaire {
         width: 100%;
         max-width: 100%;
+    }
+    table {
+        width: 100%;
+    }
+    .answers-warning {
+        display: block;
     }
 }
