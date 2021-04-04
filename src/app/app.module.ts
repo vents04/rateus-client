@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +31,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptor, multi: true },
+    HttpClient
   ],
   bootstrap: [AppComponent]
 })

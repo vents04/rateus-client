@@ -49,26 +49,26 @@
                 &nbsp;&middot;&nbsp;
                 <span class="description">{{business.phone}}</span>
             </div>
-            <div class="info-container">
+            <div class="info-container fadeInBottom">
                 <i class="fas fa-info-circle" [style.color]="color"></i>
                 <p class="description">{{languageData.info[0]}} <span class="important">{{languageData.info[1]}}</span> {{languageData.info[2]}} <span class="important">{{languageData.info[3]}}</span></p>
             </div>
             <div class="data-container container" *ngIf="dashboard">
                 <div class="row">
                     <div class="col">
-                        <div class="data">
+                        <div class="data fadeInBottom">
                             <p class="data-value" [style.color]="color">{{dashboard.totalResponses}}</p>
                             <p class="data-title">{{languageData.stats[0].title}}</p>
                         </div>
                     </div>
                     <div class="col">
-                        <div class="data">
+                        <div class="data fadeInBottom">
                             <p class="data-value" [style.color]="color">{{dashboard.lastWeekResponses}}</p>
                             <p class="data-title">{{languageData.stats[1].title}}</p>
                         </div>
                     </div>
                     <div class="col">
-                        <div class="data">
+                        <div class="data fadeInBottom">
                             <p class="data-value" [style.color]="color">{{dashboard.questionnairesCount}}</p>
                             <p class="data-title">{{languageData.stats[2].title}}</p>
                         </div>
@@ -77,7 +77,7 @@
             </div>
             <div class="min-section" *ngIf="dashboard">
                 <p class="min-section-title">{{languageData.questionnaires.title}}</p>
-                <div class="questionnaire" *ngFor="let questionnaire of dashboard.questionnaires" id="{{questionnaire._id}}" #questionnaireEl (click)="selectedQuestionnaire = questionnaire; showAnswers = !showAnswers; getAnswers()">
+                <div class="questionnaire fadeInBottom" *ngFor="let questionnaire of dashboard.questionnaires" id="{{questionnaire._id}}" #questionnaireEl (click)="selectedQuestionnaire = questionnaire; showAnswers = !showAnswers; getAnswers()">
                     <p class="questionnaire-title">{{questionnaire.title}}
                         &nbsp;&middot;&nbsp;
                         <span class="primary-text" (click)="redirectToQuestionnaire(questionnaireEl.id)" [style.color]="color">{{languageData.questionnaires.editButton}}</span>

@@ -109,6 +109,8 @@
     padding: 1rem 1.5rem;
     max-width: max-content;
     margin: 2rem 0rem;
+    animation-duration: 1s;
+    animation-fill-mode: both;
 
     i {
         font-size: 2rem;
@@ -140,6 +142,8 @@
     min-height: 150px;
     align-items: center;
     justify-content: center;
+    animation-duration: 1s;
+    animation-fill-mode: both;
 }
 
 .data:first-of-type {
@@ -179,6 +183,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    animation-duration: 1s;
+    animation-fill-mode: both;
 
     &:hover {
         cursor: pointer;
@@ -239,6 +245,15 @@ th {
     right: auto;
     margin-left: 5rem;
     align-items: flex-start;
+}
+
+.fadeInBottom { animation-name: fadeInBottom }
+@keyframes fadeInBottom {
+    from {
+        opacity: 0;
+        transform: translateY(15%);
+    }
+    to { opacity: 1 }
 }
 
 @media only screen and (max-width: 1024px) {
