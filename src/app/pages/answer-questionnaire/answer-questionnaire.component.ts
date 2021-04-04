@@ -70,7 +70,7 @@ export class AnswerQuestionnaireComponent implements OnInit {
 
   updateRange(range): void {
     this.range = range/10;
-    this.answers[this.currentQuestion].answer = parseInt(range);
+    this.answers[this.currentQuestion].answer = range;
   }
 
   updateText(text): void {
