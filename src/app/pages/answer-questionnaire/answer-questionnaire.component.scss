@@ -1,4 +1,5 @@
 @import '../../../styles.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
 
 .modal-box {
     animation-duration: 1s;
@@ -180,7 +181,7 @@ input[type="range"]::-webkit-slider-thumb {
 .pushers { 
     .description {
         text-align: center;
-        font-family: $cantata-font;
+        font-family: 'Roboto Slab', serif;
         color: #262626;
         margin-top: 0.5rem;
     }

@@ -33,6 +33,11 @@ export class LoginComponent implements OnInit {
       catchError((err: any) => {
         this.error = true;
         this.errorMessage = err.error;
+        if(this.errorMessage == "The email or phone or password is wrong" && this.language == "BG") {
+          this.errorMessage = "Грешен имейл или парола"
+        } else if(this.errorMessage == "There is not an account with the provided email address") {
+          this.errorMessage = "Не беше намерен бизнес акаунт с този имейл"
+        }
         return throwError(err);
       })
     ).subscribe((response: HttpResponse<any>) => {
