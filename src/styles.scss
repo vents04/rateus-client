@@ -155,15 +155,15 @@ p {
     }
 }
 
-.lightgrey-button {
-    background-color: #eaeaea;
-    color: #262626;
-}
-
 .important {
     font-family: $semi-bold-font;
 }
 
 .description {
     margin: 1rem 0rem;
+}
+
+.lightgrey-button {
+    background-color: #eaeaea !important;
+    color: #262626;
 }

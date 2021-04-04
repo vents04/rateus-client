@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { LanguageService } from 'src/app/services/language-service/language.service';
 
 @Component({
   selector: 'app-home',
@@ -12,13 +13,17 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private languageService: LanguageService) { }
 
   authenticated: boolean = false;
   loadPage: boolean = false;
+  language: string = undefined;
+
+  showLanguageSelector: boolean = false;
 
   ngOnInit(): void {
     this.checkToken();
+    this.getLanguage();
   }
 
   checkToken(): void {
@@ -32,6 +37,16 @@ export class HomeComponent implements OnInit {
       if(this.authenticated) this.router.navigate(['/dashboard']);
       this.loadPage = true;
     })
+  }
+
+  updateLanguage(language: string): void {
+    this.languageService.updateLanguage(language);
+    this.showLanguageSelector = false;
+    this.getLanguage();
+  }
+
+  getLanguage(): void {
+    this.language = this.languageService.getLanguage();
   }
 
 }
