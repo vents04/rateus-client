@@ -101,7 +101,7 @@
                         <tr *ngFor="let answer of selectedQuestionnaire.answers; let i = index">
                             <td>{{i+1}}</td>
                             <td>{{answer.dt}}</td>
-                            <td *ngFor="let question of counter(selectedQuestionnaire.questionsCount); let j = index">{{answer.answers[j].answer || null}}</td>
+                            <td *ngFor="let question of counter(selectedQuestionnaire.questionsCount); let j = index">{{(answer.answers[j]) ? answer.answers[j].answer : null}}</td>
                         </tr>
                     </table>
                 </div>

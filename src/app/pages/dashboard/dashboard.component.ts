@@ -110,6 +110,8 @@ export class DashboardComponent implements OnInit {
       for(let answer of this.selectedQuestionnaire.answers) {
         answer.dt = new Date(answer.dt).toLocaleString();
       }
+
+      console.log(this.selectedQuestionnaire);
     })
   }
 
@@ -124,6 +126,13 @@ export class DashboardComponent implements OnInit {
   }
 
   counter(i: number) {
+    for(let answer of this.selectedQuestionnaire.answers) {
+      for(let index = 0; index < this.selectedQuestionnaire.questionsCount; index++) {
+        console.log(answer.answers[index]);
+      }
+      console.log("-------------------------------------")
+    }
+    console.log("-------------------------------------")
     return new Array(i);
   }
 

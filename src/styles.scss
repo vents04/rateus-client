@@ -1,9 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @font-face {
     font-family: 'Logo';
-    src: url('./assets/fonts/Quicksand/static/Quicksand-Bold.ttf');
+    src: url('./assets/fonts/Quicksand/Quicksand-Bold.ttf');
 }
-
 @font-face {
     font-family: 'Montserrat Bold';
     src: url('./assets/fonts/Montserrat/Montserrat-Bold.ttf');
@@ -16,12 +15,6 @@
     font-family: 'Montserrat Regular';
     src: url('./assets/fonts/Montserrat/Montserrat-Regular.ttf');
 }
-
-@font-face {
-    font-family: 'Cantata';
-    src: url('./assets/fonts/Cantata_One/CantataOne-Regular.ttf');
-}
-
 
 $logo-font: 'Logo', sans-serif;
 $bold-font: 'Montserrat Bold', sans-serif;
