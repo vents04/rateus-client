@@ -26,7 +26,6 @@
                     <input type="password" class="modal-input" placeholder="{{languageData.inputs[1].placeholder}}" #passwordEl>
                 </div>
             </div>
-            <p class="description">{{languageData.description[0]}} <a href="https://resources.uploy.app/privacy-policy.html" target="blank" class="primary-text">{{languageData.description[1]}}</a>{{languageData.description[2]}} <a href="https://resources.uploy.app/cookie-policy.html" target="blank" class="primary-text">{{languageData.description[3]}}</a> {{languageData.description[4]}} <a target="blank" href="https://resources.uploy.app/terms-and-conditions.html" class="primary-text">{{languageData.description[5]}}</a></p>
             <button class="primary-button" (click)="login(emailEl.value, passwordEl.value)">{{languageData.continueButton}}</button>
             <p class="error-text" *ngIf="error">{{errorMessage}}</p>
         </div>

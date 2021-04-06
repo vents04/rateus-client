@@ -18,6 +18,14 @@ export class AuthService {
     )
   }
 
+  signup(name: string, email: string, phone: string, password: string) {
+    return this.webService.signup(name, email, phone, password).pipe(
+      shareReplay(), tap((res: HttpResponse<any>) => {
+        this.setSession(res.headers.get('x-auth-token'));
+      })
+    )
+  }
+
   setSession(authToken: string){
     localStorage.setItem("x-auth-token", authToken);
   }

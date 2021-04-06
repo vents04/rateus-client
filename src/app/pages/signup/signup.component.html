@@ -1,1 +1,49 @@
-<p>signup works!</p>
+<div *ngIf="languageData">
+    <div class="language-changer">
+        <div class="language-changer-topbar" (click)="showLanguageSelector = !showLanguageSelector">
+            <p class="description">{{language}}</p>
+            <i class="fas fa-sort-down"></i>
+        </div>
+        <div class="language-changer-dropdown" *ngIf="showLanguageSelector">
+            <p class="language-changer-title">{{languageData.dropdownTitle}}</p>
+            <p class="language-changer-language" (click)="updateLanguage('BG')">Български (BG)</p>
+            <p class="language-changer-language" (click)="updateLanguage('EN')">English (EN)</p>
+            <button class="small-primary-button lightgrey-button" (click)="showLanguageSelector = false">{{languageData.cancelButton}}</button>
+        </div>
+    </div>
+    <div class="centered-content">
+        <div class="modal-box fadeInBottom">
+            <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
+            <hr>
+            <p class="page-title">{{languageData.title}}</p>
+            <div class="modal-inputs">
+                <div [hidden]="!showFirstPage">
+                    <div class="modal-input-container">
+                        <p class="modal-input-title">{{languageData.inputs[0].title}}</p>
+                        <input type="text" class="modal-input" placeholder="{{languageData.inputs[0].placeholder}}" #namesEl>
+                    </div>
+                    <div class="modal-input-container">
+                        <p class="modal-input-title">{{languageData.inputs[1].title}}</p>
+                        <input type="text" class="modal-input" placeholder="{{languageData.inputs[1].placeholder}}" #emailEl>
+                    </div>
+                </div>
+                <div [hidden]="!showSecondPage">
+                    <div class="modal-input-container">
+                        <p class="modal-input-title">{{languageData.inputs[2].title}}</p>
+                        <input type="text" class="modal-input" placeholder="{{languageData.inputs[2].placeholder}}" #phoneNumberEl>
+                    </div>
+                    <div class="modal-input-container">
+                        <p class="modal-input-title">{{languageData.inputs[3].title}}</p>
+                        <input type="password" class="modal-input" placeholder="{{languageData.inputs[3].placeholder}}" #passwordEl>
+                    </div>
+                </div>
+                <div [hidden]="!showThirdPage">
+                    <p class="description">{{languageData.description[0]}} <a href="https://resources.uploy.app/privacy-policy.html" target="blank" class="primary-text">{{languageData.description[1]}}</a>{{languageData.description[2]}} <a href="https://resources.uploy.app/cookie-policy.html" target="blank" class="primary-text">{{languageData.description[3]}}</a> {{languageData.description[4]}} <a target="blank" href="https://resources.uploy.app/terms-and-conditions.html" class="primary-text">{{languageData.description[5]}}</a></p>    
+                </div>
+            </div>
+            <button class="primary-button grey-button" *ngIf="showSecondPage || showThirdPage" (click)="goBackPage()">Go back</button>
+            <button class="primary-button" (click)="signup(namesEl.value, emailEl.value, phoneNumberEl.value, passwordEl.value)">{{languageData.continueButton}}</button>
+            <p class="error-text" *ngIf="error">{{errorMessage}}</p>
+        </div>
+    </div>
+</div>

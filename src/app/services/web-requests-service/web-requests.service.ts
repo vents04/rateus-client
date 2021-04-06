@@ -15,6 +15,12 @@ export class WebRequestsService {
     { observe: 'response', responseType: 'json' });
   }
 
+  signup(name: string, email: string, phone: string, password: string) {
+    return this.http.post(`${ROOT_URL}/business/signup`,
+    { name: name, email: email, phone: phone, password: password },
+    { observe: 'response', responseType: 'json' });
+  }
+
   apply(address: string, emailOrPhone: string) {
     return this.http.post(`${ROOT_URL}/waitlist/`,
     { emailOrPhone: emailOrPhone, address: address },
