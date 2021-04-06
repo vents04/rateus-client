@@ -85,5 +85,11 @@ export class WebRequestsService {
     return this.http.get(`${ROOT_URL}/subscription/active-subscription`,
     { observe: 'response', responseType: 'json' });
   }
+
+  createSubscription(planId: string) {
+    return this.http.post(`${ROOT_URL}/subscription`,
+    { planId: planId },
+    { observe: 'response', responseType: 'json' });
+  }
 }
 

@@ -42,7 +42,13 @@
 }
 
 .subscriptions {
-    margin-top: 4rem;
+    margin-top: 2rem;
+}
+
+.inline {
+    .primary-button {
+        margin-top: 2rem;
+    }
 }
 
 .plan {
@@ -135,6 +141,10 @@
     font-family: $bold-font;
     font-size: 1.5rem;
     color: #262626;
+}
+
+.selected {
+    border: 3px solid $primary;
 }
 
 @media only screen and (max-width: 768px) {

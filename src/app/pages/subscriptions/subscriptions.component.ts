@@ -4,6 +4,7 @@ import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { LanguageService } from 'src/app/services/language-service/language.service';
+import { SubscriptionService } from 'src/app/services/subscription-service/subscription.service';
 
 @Component({
   selector: 'app-subscriptions',
@@ -12,7 +13,7 @@ import { LanguageService } from 'src/app/services/language-service/language.serv
 })
 export class SubscriptionsComponent implements OnInit {
 
-  constructor(private authService: AuthService, private languageService: LanguageService) { }
+  constructor(private authService: AuthService, private languageService: LanguageService, private subscriptionService: SubscriptionService) { }
 
   loadPage: boolean = false;
   logged: boolean = false;
@@ -20,6 +21,10 @@ export class SubscriptionsComponent implements OnInit {
   showLanguageSelector: boolean = false;
   language: string = undefined;
   languageData: any = undefined;
+
+  selectedPlan: string = undefined;
+
+  showLoading: boolean = false;
 
   ngOnInit(): void {
     this.checkToken();
@@ -53,6 +58,19 @@ export class SubscriptionsComponent implements OnInit {
   getLanguageData(): void {
     this.languageService.getLanguageData('subscriptions').subscribe((response: HttpResponse<any>) => {
       this.languageData = response.body.languageData;
+    })
+  }
+
+  activateSubscription(): void {
+    this.showLoading = true;
+    this.subscriptionService.createSubscription(this.selectedPlan).pipe(
+      catchError((err) => {
+        this.showLoading = false;
+        return throwError(err);
+      })
+    ).subscribe((response: HttpResponse<any>) => {
+      this.showLoading = false;
+      window.location.replace(`${response.body.links[0].href}`);
     })
   }
 

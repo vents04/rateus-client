@@ -11,4 +11,8 @@ export class SubscriptionService {
   getActiveSubscription() {
     return this.webRequestsService.getActiveSubscription();
   }
+
+  createSubscription(planId: string) {
+    return this.webRequestsService.createSubscription(planId);
+  }
 }
