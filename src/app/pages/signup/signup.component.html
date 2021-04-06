@@ -20,7 +20,7 @@
                 <div [hidden]="!showFirstPage">
                     <div class="modal-input-container">
                         <p class="modal-input-title">{{languageData.inputs[0].title}}</p>
-                        <input type="text" class="modal-input" placeholder="{{languageData.inputs[0].placeholder}}" #namesEl>
+                        <input type="text" class="modal-input" placeholder="{{languageData.inputs[0].placeholder}}" #nameEl>
                     </div>
                     <div class="modal-input-container">
                         <p class="modal-input-title">{{languageData.inputs[1].title}}</p>
@@ -30,7 +30,7 @@
                 <div [hidden]="!showSecondPage">
                     <div class="modal-input-container">
                         <p class="modal-input-title">{{languageData.inputs[2].title}}</p>
-                        <input type="text" class="modal-input" placeholder="{{languageData.inputs[2].placeholder}}" #phoneNumberEl>
+                        <input type="text" class="modal-input" placeholder="{{languageData.inputs[2].placeholder}}" #phoneEl>
                     </div>
                     <div class="modal-input-container">
                         <p class="modal-input-title">{{languageData.inputs[3].title}}</p>
@@ -41,8 +41,10 @@
                     <p class="description">{{languageData.description[0]}} <a href="https://resources.uploy.app/privacy-policy.html" target="blank" class="primary-text">{{languageData.description[1]}}</a>{{languageData.description[2]}} <a href="https://resources.uploy.app/cookie-policy.html" target="blank" class="primary-text">{{languageData.description[3]}}</a> {{languageData.description[4]}} <a target="blank" href="https://resources.uploy.app/terms-and-conditions.html" class="primary-text">{{languageData.description[5]}}</a></p>    
                 </div>
             </div>
+            <p class="error-text">{{errorMessage}}</p>
+            <p class="success-text" *ngIf="showSuccess">{{languageData.success}}</p>
             <button class="primary-button grey-button" *ngIf="showSecondPage || showThirdPage" (click)="goBackPage()">Go back</button>
-            <button class="primary-button" (click)="signup(namesEl.value, emailEl.value, phoneNumberEl.value, passwordEl.value)">{{languageData.continueButton}}</button>
+            <button class="primary-button" (click)="signup(nameEl.value, emailEl.value, phoneEl.value, passwordEl.value)">{{languageData.continueButton}}</button>
             <p class="error-text" *ngIf="error">{{errorMessage}}</p>
         </div>
     </div>
