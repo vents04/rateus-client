@@ -6,6 +6,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditQuestionnaireComponent } from './pages/edit-questionnaire/edit-questionnaire.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'edit-questionnaire/:id', component: EditQuestionnaireComponent},
   {path: 'answer-questionnaire/:id', component: AnswerQuestionnaireComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
   {path: 'dashboard', component: DashboardComponent}
 ];
 

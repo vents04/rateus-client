@@ -13,6 +13,7 @@ import { WebReqInterceptor } from './web-req.interceptor';
 import { AnswerQuestionnaireComponent } from './pages/answer-questionnaire/answer-questionnaire.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     AnswerQuestionnaireComponent,
     LoginComponent,
     DashboardComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

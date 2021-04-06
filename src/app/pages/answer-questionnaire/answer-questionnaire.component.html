@@ -49,7 +49,7 @@
                     <div class="question-range-container" *ngIf="questions[currentQuestion].input == 0">
                         <p class="question-range-title">0</p>
                         <input type="range" #rangeEl value="{{(answers[currentQuestion].answer != null) ? answers[currentQuestion].answer : 5}}" (input)="updateRange(rangeEl.value)"/>
-                        <p class="question-range-title">10</p>
+                        <p class="question-range-title">100</p>
                     </div>
                     <p class="description" *ngIf="questions[currentQuestion].input == 0">{{languageData.currentValue}} {{(answers[currentQuestion].answer != null) ? answers[currentQuestion].answer : range}}</p>
                     <input class="question-input" (input)="updateText(textEl.value)" #textEl value="{{answers[currentQuestion].answer}}" type="text" placeholder="{{languageData.placeholder}}" *ngIf="questions[currentQuestion].input == 1" />
