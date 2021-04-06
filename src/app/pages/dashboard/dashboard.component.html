@@ -55,7 +55,8 @@
                 &nbsp;&middot;&nbsp;
                 <span class="description">{{business.phone}}</span>
             </div>
-            <button class="small-primary-button" *ngIf="business.status == 1 && !activeSubscription">Activate subscription</button>
+            <p class="description">{{subscriptionMessage}}</p>
+            <button class="primary-button" *ngIf="business.status == 1 && !activeSubscription">Activate subscription</button>
             <div class="info-container fadeInBottom">
                 <i class="fas fa-info-circle" [style.color]="color"></i>
                 <p class="description">{{languageData.info[0]}} <span class="important">{{languageData.info[1]}}</span> {{languageData.info[2]}} <span class="important">{{languageData.info[3]}}</span></p>

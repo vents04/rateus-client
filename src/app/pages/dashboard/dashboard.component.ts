@@ -41,6 +41,7 @@ export class DashboardComponent implements OnInit {
   languageData: any = undefined;
 
   activeSubscription: any = null;
+  subscriptionMessage: string = null;
 
   ngOnInit(): void {
     this.checkToken();
@@ -157,7 +158,8 @@ export class DashboardComponent implements OnInit {
         return throwError(err);
       })
     ).subscribe((response: HttpResponse<any>) => {
-      this.activeSubscription = response.body.activeSubscription
+      this.activeSubscription = response.body.activeSubscription;
+      this.subscriptionMessage = response.body.message;
     })
   }
 }
