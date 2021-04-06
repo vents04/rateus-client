@@ -247,6 +247,21 @@ th {
     align-items: flex-start;
 }
 
+.pending-preview {
+    padding: 0.5rem 0.75rem;
+    box-shadow: 0px 0px 6px #e7e7e7;
+    border-radius: 6px;
+    width: max-content;
+    margin-bottom: 1rem;
+    background-color: white;
+}
+
+.pending-text {
+    font-family: $semi-bold-font;
+    font-size: 1rem;
+    color: #262626;
+}
+
 .fadeInBottom { animation-name: fadeInBottom }
 @keyframes fadeInBottom {
     from {

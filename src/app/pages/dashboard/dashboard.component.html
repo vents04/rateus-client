@@ -38,6 +38,12 @@
             </div>
         </div>
         <div class="main-section" *ngIf="business">
+            <div class="pending-preview" *ngIf="business.status == 0">
+                <p class="pending-text" [style.color]="business.color">Your account is pending a quick review from our team.</p>
+            </div>
+            <div class="pending-preview" *ngIf="business.status == 2">
+                <p class="pending-text" [style.color]="business.color">Your account has been blocked.</p>
+            </div>
             <div class="inline">
                 <p class="big-title">{{business.name}}</p>
                 <div class="color-container">
