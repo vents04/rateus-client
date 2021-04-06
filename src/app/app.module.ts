@@ -14,6 +14,7 @@ import { AnswerQuestionnaireComponent } from './pages/answer-questionnaire/answe
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { SubscriptionsComponent } from './pages/subscriptions/subscriptions.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SignupComponent } from './pages/signup/signup.component';
     LoginComponent,
     DashboardComponent,
     SignupComponent,
+    SubscriptionsComponent,
   ],
   imports: [
     BrowserModule,

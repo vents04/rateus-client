@@ -1,0 +1,163 @@
+@import '../../../styles.scss';
+
+.main-section {
+    padding: 5rem 5rem;
+}
+
+.modal-box {
+    .description {
+        text-align: center;
+    }
+}
+
+.modal-title {
+    font-family: $bold-font;
+    font-size: 2rem;
+    color: #262626;
+    text-align: center;
+}
+
+.language-changer {
+    left: 0;
+    right: auto;
+    margin-left: 5rem;
+    align-items: flex-start;
+}
+
+.big-title {
+    font-family: $bold-font;
+    font-size: 2.75rem;
+    color: #262626;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}  
+
+.navbar-topbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 5rem;
+    background-color: #fafafa;
+}
+
+.subscriptions {
+    margin-top: 4rem;
+}
+
+.plan {
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 6px;
+    box-shadow: 0px 0px 6px #e7e7e7;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+
+    .primary-text {
+        text-align: center;
+    }
+}
+
+.recommended {
+    font-family: $semi-bold-font;
+    font-size: 0.6rem;
+    color: $primary;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-transform: uppercase;
+    margin-top: 15px;
+}
+
+.plan:first-of-type {
+    margin-left: 0px;
+}
+
+.recommended-plan {
+    box-shadow: 0px 0px 6px $primary;
+}
+
+.plan-title {
+    font-family: $bold-font;
+    font-size: 2rem;
+    color: #262626;
+    text-align: center;
+}
+
+.plan-info-title {
+    font-family: $regular-font;
+    font-size: 0.9rem;
+    color: gray;
+    margin-bottom: 0.5rem;
+    text-decoration: underline;
+}
+
+.plan-info-item {
+    font-family: $regular-font;
+    font-size: 1rem;
+    color: #262626;
+
+    i {
+        color: $primary;
+        margin-right: 0.5rem;
+    }
+}
+
+.option {
+    margin: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 6px;
+    border: 1px solid #e7e7e7;
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0px 0px 6px #e7e7e7;
+        transition: 0.4s;
+    }
+}
+
+.option-title {
+    font-family: $semi-bold-font;
+    font-size: 0.6rem;
+    color: gray;
+    text-transform: uppercase;
+}
+
+.option-value {
+    font-family: $bold-font;
+    font-size: 1.5rem;
+    color: #262626;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar-topbar {
+        padding: 1rem 2rem;
+
+        .logo {
+            font-size: 1rem;
+        }
+        .product {
+            font-size: 0.75rem;
+        }
+        .primary-text {
+            font-size: 0.9rem;
+        }
+    }
+    .language-changer {
+        margin-left: 2rem;
+    }
+    .big-title { 
+        font-size: 1.5rem;
+    }
+    .main-section {
+        padding: 3rem 2rem;
+    }
+}

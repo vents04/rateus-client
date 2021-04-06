@@ -7,6 +7,7 @@ import { EditQuestionnaireComponent } from './pages/edit-questionnaire/edit-ques
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { SubscriptionsComponent } from './pages/subscriptions/subscriptions.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'answer-questionnaire/:id', component: AnswerQuestionnaireComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'dashboard', component: DashboardComponent}
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'subscriptions', component: SubscriptionsComponent}
 ];
 
 @NgModule({

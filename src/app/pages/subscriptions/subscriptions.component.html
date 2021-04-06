@@ -1,0 +1,101 @@
+<div *ngIf="languageData">
+    <div class="centered-content" *ngIf="!logged && loadPage">
+        <div class="modal-box fadeInBottom">
+            <p class="modal-title">Error</p>
+            <p class="description">You must login or signup for a Uploy business account before accessing subscriptions page.</p>
+            <button class="small-primary-button" routerLink="/">Go to Home</button>
+        </div>
+    </div>    
+    <div *ngIf="logged && loadPage">
+        <div class="navbar-topbar">
+            <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
+            <p class="primary-text" (click)="logOut()" [style.color]="color">{{languageData.logOutButton}}</p>
+        </div>
+        <div class="language-changer">
+            <div class="language-changer-topbar" (click)="showLanguageSelector = !showLanguageSelector">
+                <p class="description">{{language}}</p>
+                <i class="fas fa-sort-down"></i>
+            </div>
+            <div class="language-changer-dropdown" *ngIf="showLanguageSelector">
+                <p class="language-changer-title">{{languageData.dropdownTitle}}</p>
+                <p class="language-changer-language" (click)="updateLanguage('BG')">Български (BG)</p>
+                <p class="language-changer-language" (click)="updateLanguage('EN')">English (EN)</p>
+                <button class="small-primary-button lightgrey-button" (click)="showLanguageSelector = false">{{languageData.cancelButton}}</button>
+            </div>
+        </div>
+        <div class="main-section">
+            <div class="inline">
+                <p class="big-title">Subscriptions</p>
+            </div>
+            <div class="row subscriptions">
+                <div class="col-lg-4">
+                    <div class="plan">
+                        <p class="plan-title">Basic</p>
+                        <div class="plan-info">
+                            <p class="plan-info-title">Includes:</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>1 questionnaire</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>Best for small enterprises</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>24 hour support response time</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>Only QR code integration</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="option">
+                                    <p class="option-title">Monthly</p>
+                                    <p class="option-value">2.50&euro;</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="option">
+                                    <p class="option-title">Yearly</p>
+                                    <p class="option-value">25&euro;</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="plan recommended-plan">
+                        <p class="recommended">Recommended</p>
+                        <p class="plan-title">Pro</p>
+                        <div class="plan-info">
+                            <p class="plan-info-title">Includes:</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>As many questionnaires as you want</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>Best for medium-sized enterprises</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>6 hour support response time</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>QR code and NFC tag integrations</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>Early access to new products and services</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="option">
+                                    <p class="option-title">Monthly</p>
+                                    <p class="option-value">5&euro;</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="option">
+                                    <p class="option-title">Yearly</p>
+                                    <p class="option-value">45&euro;</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="plan">
+                        <p class="plan-title">Custom</p>
+                        <div class="plan-info">
+                            <p class="plan-info-title">Includes:</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>Everything from Pro</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>Best for big enterprises</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>Priority support</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>Custom built solutions</p>
+                        </div>
+                        <p class="primary-text">Contact sales at support@uploy.app or by calling to +359 882 764 107 or +359 895 703 556</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
