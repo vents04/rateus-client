@@ -39,7 +39,7 @@
         </div>
         <div class="main-section" *ngIf="business">
             <div class="pending-preview" *ngIf="business.status == 0">
-                <p class="pending-text" [style.color]="business.color">Your account is pending a quick review from our team.</p>
+                <p class="pending-text" [style.color]="business.color">Your account is pending a quick review from our team. After we verify it, you can choose a subscription plan.</p>
             </div>
             <div class="pending-preview" *ngIf="business.status == 2">
                 <p class="pending-text" [style.color]="business.color">Your account has been blocked.</p>
