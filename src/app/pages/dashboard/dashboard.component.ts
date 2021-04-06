@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { BusinessService } from 'src/app/services/business-service/business.service';
 import { LanguageService } from 'src/app/services/language-service/language.service';
 import { QuestionnaireService } from 'src/app/services/questionnaire-service/questionnaire.service';
+import { SubscriptionService } from 'src/app/services/subscription-service/subscription.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,7 +22,8 @@ export class DashboardComponent implements OnInit {
               private router: Router, 
               private answerService: AnswerService,
               private questionnaireService: QuestionnaireService,
-              private languageService: LanguageService) { }
+              private languageService: LanguageService,
+              private subscriptionService: SubscriptionService) { }
 
   authenticated: boolean = false;
   loadPage: boolean = false;
@@ -37,6 +39,8 @@ export class DashboardComponent implements OnInit {
   showLanguageSelector: boolean = false;
   language: string = undefined;
   languageData: any = undefined;
+
+  activeSubscription: any = null;
 
   ngOnInit(): void {
     this.checkToken();
@@ -55,6 +59,7 @@ export class DashboardComponent implements OnInit {
       this.getBusiness();
       this.getLanguage();
       this.getLanguageData();
+      this.getActiveSubscription();
     })
   }
 
@@ -143,6 +148,16 @@ export class DashboardComponent implements OnInit {
   getLanguageData(): void {
     this.languageService.getLanguageData('dashboard').subscribe((response: HttpResponse<any>) => {
       this.languageData = response.body.languageData;
+    })
+  }
+
+  getActiveSubscription(): void {
+    this.subscriptionService.getActiveSubscription().pipe(
+      catchError((err: any) => {
+        return throwError(err);
+      })
+    ).subscribe((response: HttpResponse<any>) => {
+      this.activeSubscription = response.body.activeSubscription
     })
   }
 }

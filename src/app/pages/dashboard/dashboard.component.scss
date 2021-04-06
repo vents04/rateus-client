@@ -262,6 +262,11 @@ th {
     color: #262626;
 }
 
+.small-primary-button {
+    width: max-content;
+    margin-top: 1rem;
+}
+
 .fadeInBottom { animation-name: fadeInBottom }
 @keyframes fadeInBottom {
     from {

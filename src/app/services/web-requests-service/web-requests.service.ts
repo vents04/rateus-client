@@ -80,5 +80,10 @@ export class WebRequestsService {
     return this.http.get(`${ROOT_URL}/language/${language}/${page}`,
     { observe: 'response', responseType: 'json' });
   }
+
+  getActiveSubscription() {
+    return this.http.get(`${ROOT_URL}/subscription/active-subscription`,
+    { observe: 'response', responseType: 'json' });
+  }
 }
 
