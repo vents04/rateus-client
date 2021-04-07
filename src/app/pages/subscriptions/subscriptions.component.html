@@ -26,6 +26,7 @@
         <div class="main-section">
             <div class="inline">
                 <p class="big-title">Subscriptions</p>
+                <p class="primary-text" *ngIf="showLoadingSubscription">Loading...</p>
             </div>
             <div class="row subscriptions" *ngIf="activeSubscription && showSubscriptionField"> 
                 <div class="col-lg-4">
@@ -33,10 +34,11 @@
                         <p class="plan-title">{{activePlan.name}}</p>
                         <div class="plan-info" *ngIf="activePlan.id == 'P-7VM84154E5674234NMBWEAIA' || activePlan.id == 'P-5LP01409YW643441XMBWEBSY'">
                             <p class="plan-info-title">Includes:</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>1 questionnaire</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>Up to 2 questionnaires</p>
                             <p class="plan-info-item"><i class="fas fa-check"></i>Best for small enterprises</p>
                             <p class="plan-info-item"><i class="fas fa-check"></i>24 hour support response time</p>
                             <p class="plan-info-item"><i class="fas fa-check"></i>Only QR code integration</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>Up to 2 locations</p>
                         </div>
                         <div class="plan-info" *ngIf="activePlan.id == 'P-0KP52199T1312045SMBWECWY' || activePlan.id == 'P-2N608157S5769952BMBWEDKA'">
                             <p class="plan-info-title">Includes:</p>
@@ -45,6 +47,7 @@
                             <p class="plan-info-item"><i class="fas fa-check"></i>6 hour support response time</p>
                             <p class="plan-info-item"><i class="fas fa-check"></i>QR code and NFC tag integrations</p>
                             <p class="plan-info-item"><i class="fas fa-check"></i>Early access to new products and services</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>Up to 3 locations</p>
                         </div>
                         <p class="description"><span class="plan-info-title">Active from:</span>&nbsp;{{activeSubscription.from}}</p>
                         <div class="row">
@@ -61,7 +64,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="primary-text">If you want to cancel the subscription, contact support at support@uploy.app or call +359 882 764 107</p>
+                        <p class="primary-text">If you want to cancel or upgrade the subscription, contact support at support@uploy.app or call +359 882 764 107</p>
                     </div>
                 </div>
             </div>
@@ -71,10 +74,11 @@
                         <p class="plan-title">Basic</p>
                         <div class="plan-info">
                             <p class="plan-info-title">Includes:</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>1 questionnaire</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>Up to 2 questionnaires</p>
                             <p class="plan-info-item"><i class="fas fa-check"></i>Best for small enterprises</p>
                             <p class="plan-info-item"><i class="fas fa-check"></i>24 hour support response time</p>
                             <p class="plan-info-item"><i class="fas fa-check"></i>Only QR code integration</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>Up to 2 locations</p>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
@@ -104,6 +108,7 @@
                             <p class="plan-info-item"><i class="fas fa-check"></i>Best for medium-sized enterprises</p>
                             <p class="plan-info-item"><i class="fas fa-check"></i>6 hour support response time</p>
                             <p class="plan-info-item"><i class="fas fa-check"></i>QR code and NFC tag integrations</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>Up to 3 locations</p>
                             <p class="plan-info-item"><i class="fas fa-check"></i>Early access to new products and services</p>
                         </div>
                         <div class="row">

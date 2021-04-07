@@ -27,6 +27,7 @@ export class SubscriptionsComponent implements OnInit {
 
   showLoading: boolean = false;
   showSubscriptionField: boolean = false;
+  showLoadingSubscription: boolean = false;
 
   ngOnInit(): void {
     this.checkToken();
@@ -78,13 +79,16 @@ export class SubscriptionsComponent implements OnInit {
   }
 
   getActiveSubscription(): void {
+    this.showLoadingSubscription = true;
     this.subscriptionService.getActiveSubscription().pipe(
       catchError((err: any) => {
+        this.showLoadingSubscription = false;
         return throwError(err);
       })
     ).subscribe((response: HttpResponse<any>) => {
+      this.showLoadingSubscription = false;
       this.activeSubscription = response.body.activeSubscription;
-      this.activeSubscription.from = new Date(this.activeSubscription.from).toLocaleString();
+      if(this.activeSubscription) this.activeSubscription.from = new Date(this.activeSubscription.from).toLocaleString();
       this.activePlan = response.body.plan;
       this.showSubscriptionField = true;
     })
