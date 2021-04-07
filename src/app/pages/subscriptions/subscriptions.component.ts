@@ -21,15 +21,18 @@ export class SubscriptionsComponent implements OnInit {
   showLanguageSelector: boolean = false;
   language: string = undefined;
   languageData: any = undefined;
-
+  activeSubscription: any = undefined;
+  activePlan: any = undefined;
   selectedPlan: string = undefined;
 
   showLoading: boolean = false;
+  showSubscriptionField: boolean = false;
 
   ngOnInit(): void {
     this.checkToken();
     this.getLanguage();
     this.getLanguageData();
+    this.getActiveSubscription();
   }
 
   checkToken(): void {
@@ -70,7 +73,20 @@ export class SubscriptionsComponent implements OnInit {
       })
     ).subscribe((response: HttpResponse<any>) => {
       this.showLoading = false;
-      window.location.replace(`${response.body.links[0].href}`);
+      window.location.replace(`${response.body.subscription.links[0].href}`);
+    })
+  }
+
+  getActiveSubscription(): void {
+    this.subscriptionService.getActiveSubscription().pipe(
+      catchError((err: any) => {
+        return throwError(err);
+      })
+    ).subscribe((response: HttpResponse<any>) => {
+      this.activeSubscription = response.body.activeSubscription;
+      this.activeSubscription.from = new Date(this.activeSubscription.from).toLocaleString();
+      this.activePlan = response.body.plan;
+      this.showSubscriptionField = true;
     })
   }
 

@@ -42,6 +42,7 @@ export class DashboardComponent implements OnInit {
 
   activeSubscription: any = null;
   subscriptionMessage: string = null;
+  showSubscriptionButton: boolean = false;
 
   ngOnInit(): void {
     this.checkToken();
@@ -116,8 +117,6 @@ export class DashboardComponent implements OnInit {
       for(let answer of this.selectedQuestionnaire.answers) {
         answer.dt = new Date(answer.dt).toLocaleString();
       }
-
-      console.log(this.selectedQuestionnaire);
     })
   }
 
@@ -155,11 +154,13 @@ export class DashboardComponent implements OnInit {
   getActiveSubscription(): void {
     this.subscriptionService.getActiveSubscription().pipe(
       catchError((err: any) => {
+        this.showSubscriptionButton = true;
         return throwError(err);
       })
     ).subscribe((response: HttpResponse<any>) => {
       this.activeSubscription = response.body.activeSubscription;
       this.subscriptionMessage = response.body.message;
+      this.showSubscriptionButton = true;
     })
   }
 }
