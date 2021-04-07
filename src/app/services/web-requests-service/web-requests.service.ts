@@ -97,5 +97,10 @@ export class WebRequestsService {
     { title: title },
     { observe: 'response', responseType: 'json' });
   }
+
+  checkBusinessActive(businessId: string) {
+    return this.http.get(`${ROOT_URL}/business/${businessId}/is-active`,
+    { observe: 'response', responseType: 'json' });
+  }
 }
 

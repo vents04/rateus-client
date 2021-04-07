@@ -37,7 +37,7 @@
                 <p class="error-text">{{languageData.notFound}}</p>
             </div>
         </div>
-        <div class="centered-content" *ngIf="success && !error">
+        <div class="centered-content" *ngIf="success && !error && showQuestionnaire && active">
             <div class="modal-box fadeInBottom">
                 <div class="pushers">
                     <p class="pusher-value" [style.color]="color">{{questionnaireTitle}}</p>
@@ -71,5 +71,10 @@
                 <p class="error-text" *ngIf="errorSubmission">{{languageData.error}}</p>
             </div>
         </div>    
+        <div class="centered-content" *ngIf="success && !error && showQuestionnaire && !active">
+            <div class="modal-box fadeInBottom">
+                <p class="error-text">{{languageData.notActive}}</p>
+            </div>
+        </div>
     </div>
 </div>

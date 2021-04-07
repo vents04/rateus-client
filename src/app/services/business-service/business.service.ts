@@ -23,4 +23,8 @@ export class BusinessService {
   updateColor(color: string) {
     return this.webRequestsService.updateColor(color);
   }
+
+  checkIsActive(businessId: string) {
+    return this.webRequestsService.checkBusinessActive(businessId);
+  }
 }

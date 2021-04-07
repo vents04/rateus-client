@@ -51,6 +51,8 @@ export class AnswerQuestionnaireComponent implements OnInit {
   showLanguageSelector: boolean = false;
   language: string = undefined;
   languageData: any = undefined;
+  showQuestionnaire: boolean = false;
+  active: boolean = false;
 
   ngOnInit(): void {
     this.questionnaireId = this.activatedRoute.snapshot.paramMap.get("id");
@@ -94,6 +96,7 @@ export class AnswerQuestionnaireComponent implements OnInit {
           this.answers.push({'answer': '', input: question.input});
         }
 
+        this.checkBusinessActive();
         this.getColor();
         this.getLanguage();
         this.getLanguageData();
@@ -136,6 +139,18 @@ export class AnswerQuestionnaireComponent implements OnInit {
   getLanguageData(): void {
     this.languageService.getLanguageData('answer-questionnaire').subscribe((response: HttpResponse<any>) => {
       this.languageData = response.body.languageData;
+    })
+  }
+
+  checkBusinessActive(): void {
+    this.businessService.checkIsActive(this.businessId).pipe(
+      catchError((err) => {
+        this.showQuestionnaire = true;
+        return throwError(err);
+      })
+    ).subscribe((response: HttpResponse<any>) => {
+      this.active = response.body.active;
+      this.showQuestionnaire = true;
     })
   }
 }
