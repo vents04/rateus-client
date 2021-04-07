@@ -91,5 +91,11 @@ export class WebRequestsService {
     { planId: planId },
     { observe: 'response', responseType: 'json' });
   }
+
+  createQuestionnaire(title: string) {
+    return this.http.post(`${ROOT_URL}/questionnaire`,
+    { title: title },
+    { observe: 'response', responseType: 'json' });
+  }
 }
 

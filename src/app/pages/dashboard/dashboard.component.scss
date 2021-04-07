@@ -266,6 +266,20 @@ th {
     margin-top: 1rem;
 }
 
+.success-text {
+    color: $primary;
+    font-family: $semi-bold-font;
+    font-size: 1rem;
+    margin-top: 0.75rem;
+}
+
+.error-text {
+    color: $error;
+    font-family: $semi-bold-font;
+    font-size: 1rem;
+    margin-top: 0.75rem;
+}
+
 .fadeInBottom { animation-name: fadeInBottom }
 @keyframes fadeInBottom {
     from {

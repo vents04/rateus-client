@@ -15,4 +15,8 @@ export class QuestionnaireService {
   updateQuestionnaire(id: string, questions: any, title: string) {
     return this.webRequestsService.updateQuestionnaire(id, questions, title);
   }
+
+  createQuestionnaire(title: string) {
+    return this.webRequestsService.createQuestionnaire(title);
+  }
 }

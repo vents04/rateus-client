@@ -44,6 +44,17 @@ export class DashboardComponent implements OnInit {
   subscriptionMessage: string = null;
   showSubscriptionButton: boolean = false;
 
+  showQuestionnaireResponse: boolean = false;
+  showSuccessQuestionnaire: boolean = false;
+  showErrorQuestionnaire: boolean = false;
+
+  maximumQuestionnaires = {
+    'P-7VM84154E5674234NMBWEAIA': 2,
+    'P-5LP01409YW643441XMBWEBSY': 2,
+    'P-0KP52199T1312045SMBWECWY': 3,
+    'P-2N608157S5769952BMBWEDKA': 3
+  }
+
   ngOnInit(): void {
     this.checkToken();
   }
@@ -161,6 +172,18 @@ export class DashboardComponent implements OnInit {
       this.activeSubscription = response.body.activeSubscription;
       this.subscriptionMessage = response.body.message;
       this.showSubscriptionButton = true;
+    })
+  }
+
+  createQuestionnaire(title): void {
+    this.questionnaireService.createQuestionnaire(title).pipe(
+      catchError((err: any) => {
+        this.showQuestionnaireResponse = true;
+        this.showErrorQuestionnaire = true;
+        return throwError(err);
+      })
+    ).subscribe((response: HttpResponse<any>) => {
+      this.router.navigate([`/edit-questionnaire/${response.body.questionnaire._id}`]);
     })
   }
 }
