@@ -51,8 +51,8 @@ export class DashboardComponent implements OnInit {
   maximumQuestionnaires = {
     'P-7VM84154E5674234NMBWEAIA': 2,
     'P-5LP01409YW643441XMBWEBSY': 2,
-    'P-0KP52199T1312045SMBWECWY': 3,
-    'P-2N608157S5769952BMBWEDKA': 3
+    'P-0KP52199T1312045SMBWECWY': 10000,
+    'P-2N608157S5769952BMBWEDKA': 10000
   }
 
   ngOnInit(): void {
