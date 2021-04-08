@@ -37,6 +37,7 @@ export class EditQuestionnaireComponent implements OnInit {
   success: boolean = false;
 
   errorUpdate: boolean = false;
+  errorNull: boolean = false;
   successUpdate: boolean = false;
 
   showLanguageSelector: boolean = false;
@@ -97,7 +98,14 @@ export class EditQuestionnaireComponent implements OnInit {
 
   submitData(): void {
     this.errorUpdate = false;
+    this.errorNull = false;
     this.successUpdate = false;
+    for(let question of this.questions) {
+      if(!question.title) {
+        this.errorNull = true;
+        return;
+      }
+    }
     this.questionnaireService.updateQuestionnaire(this.questionnaireId, 
       this.questions, this.questionnaireTitle).pipe(
         catchError((err: any) => {
@@ -107,7 +115,7 @@ export class EditQuestionnaireComponent implements OnInit {
       ).subscribe((response: HttpResponse<any>) => {
       this.successUpdate = true;
       setTimeout(() => {
-        window.location.reload();
+        this.router.navigate(['/dashboard']);
       }, 4000);
     }) 
   }

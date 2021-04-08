@@ -41,6 +41,7 @@
             <button class="primary-button grey-button" (click)="deleteQuestion()">{{languageData.deleteQuestionButton}}</button>
             <button class="primary-button" (click)="submitData()">{{languageData.finishAndSubmitButton}}</button>
             <p class="error-text" *ngIf="errorUpdate">{{languageData.error}}</p>
+            <p class="error-text" *ngIf="errorNull">{{languageData.errorNull}}</p>
             <p class="success-text" *ngIf="successUpdate">{{languageData.success}}</p>
         </div>
     </div>
