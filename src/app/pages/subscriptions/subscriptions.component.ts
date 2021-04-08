@@ -1,5 +1,6 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
@@ -13,7 +14,7 @@ import { SubscriptionService } from 'src/app/services/subscription-service/subsc
 })
 export class SubscriptionsComponent implements OnInit {
 
-  constructor(private authService: AuthService, private languageService: LanguageService, private subscriptionService: SubscriptionService) { }
+  constructor(private router: Router,private authService: AuthService, private languageService: LanguageService, private subscriptionService: SubscriptionService) { }
 
   loadPage: boolean = false;
   logged: boolean = false;
@@ -92,6 +93,11 @@ export class SubscriptionsComponent implements OnInit {
       this.activePlan = response.body.plan;
       this.showSubscriptionField = true;
     })
+  }
+
+  logOut(): void {
+    this.authService.removeSession();
+    this.router.navigate(['/']);
   }
 
 }
