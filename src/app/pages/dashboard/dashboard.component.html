@@ -87,10 +87,10 @@
             </div>
             <div class="min-section" *ngIf="dashboard">
                 <p class="min-section-title">{{languageData.questionnaires.title}}</p>
-                <p class="error-text" *ngIf="showQuestionnaireResponse && showErrorQuestionnaire">There was an error creating the questionnaire. Try again or contact support.</p>
-                <button class="primary-button" *ngIf="activeSubscription && showSubscriptionButton && maximumQuestionnaires[dashboard.activeSubscription.plan.id] > dashboard.questionnaires.length" (click)="createQuestionnaire('Default title')">Add questionnaire</button>
-                <p class="description" *ngIf="!activeSubscription && showSubscriptionButton">Your questionnaire is not active because you have not activated a subscription.</p>
-                <p class="description" *ngIf="activeSubscription && showSubscriptionButton && maximumQuestionnaires[dashboard.activeSubscription.plan.id] == dashboard.questionnaires.length">Your subscription plan does not support more than {{maximumQuestionnaires[dashboard.activeSubscription.plan.id]}} questionnaires. Contact support to upgrade.</p>
+                <p class="error-text" *ngIf="showQuestionnaireResponse && showErrorQuestionnaire">{{languageData.errorCreating}}</p>
+                <button class="primary-button" *ngIf="activeSubscription && showSubscriptionButton && maximumQuestionnaires[dashboard.activeSubscription.plan.id] > dashboard.questionnaires.length" (click)="createQuestionnaire('Default title')">{{languageData.addQuestionnaireButton}}</button>
+                <p class="description" *ngIf="!activeSubscription && showSubscriptionButton">{{languageData.cannotActivate}}</p>
+                <p class="description" *ngIf="activeSubscription && showSubscriptionButton && maximumQuestionnaires[dashboard.activeSubscription.plan.id] == dashboard.questionnaires.length">{{languageData.maxQuestionnaires[0]}}&nbsp;{{maximumQuestionnaires[dashboard.activeSubscription.plan.id]}}&nbsp;{{languageData.maxQuestionnaires[1]}}</p>
                 <div class="questionnaire fadeInBottom" *ngFor="let questionnaire of dashboard.questionnaires" id="{{questionnaire._id}}" #questionnaireEl (click)="selectedQuestionnaire = questionnaire; showAnswers = !showAnswers; getAnswers()">
                     <p class="questionnaire-title">{{questionnaire.title}}
                         &nbsp;&middot;&nbsp;

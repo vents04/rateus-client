@@ -1,9 +1,9 @@
 <div *ngIf="languageData">
     <div class="centered-content" *ngIf="!logged && loadPage">
         <div class="modal-box fadeInBottom">
-            <p class="modal-title">Error</p>
-            <p class="description">You must login or signup for a Uploy business account before accessing subscriptions page.</p>
-            <button class="small-primary-button" routerLink="/">Go to Home</button>
+            <p class="modal-title">{{languageData.errorTitle}}</p>
+            <p class="description">{{languageData.errorMessage}}</p>
+            <button class="small-primary-button" routerLink="/">{{languageData.errorButton}}</button>
         </div>
     </div>    
     <div *ngIf="logged && loadPage">
@@ -25,121 +25,133 @@
         </div>
         <div class="main-section">
             <div class="inline">
-                <p class="big-title">Subscriptions</p>
-                <p class="primary-text" *ngIf="showLoadingSubscription">Loading...</p>
+                <p class="big-title">{{languageData.title}}</p>
+                <p class="primary-text" *ngIf="showLoadingSubscription">{{languageData.loadingText}}</p>
             </div>
             <div class="row subscriptions" *ngIf="activeSubscription && showSubscriptionField"> 
                 <div class="col-lg-4">
                     <div class="plan">
                         <p class="plan-title">{{activePlan.name}}</p>
                         <div class="plan-info" *ngIf="activePlan.id == 'P-7VM84154E5674234NMBWEAIA' || activePlan.id == 'P-5LP01409YW643441XMBWEBSY'">
-                            <p class="plan-info-title">Includes:</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Up to 2 questionnaires</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Best for small enterprises</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>24 hour support response time</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Only QR code integration</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Up to 2 locations</p>
+                            <p class="plan-info-title">{{languageData.plans.includesText}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.basic.includes[0]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.basic.includes[1]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.basic.includes[2]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.basic.includes[3]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.basic.includes[4]}}</p>
                         </div>
                         <div class="plan-info" *ngIf="activePlan.id == 'P-0KP52199T1312045SMBWECWY' || activePlan.id == 'P-2N608157S5769952BMBWEDKA'">
-                            <p class="plan-info-title">Includes:</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>As many questionnaires as you want</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Best for medium-sized enterprises</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>6 hour support response time</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>QR code and NFC tag integrations</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Early access to new products and services</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Up to 3 locations</p>
+                            <p class="plan-info-title">{{languageData.plans.includesText}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.pro.includes[0]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.pro.includes[1]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.pro.includes[2]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.pro.includes[3]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.pro.includes[4]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.pro.includes[5]}}</p>
                         </div>
-                        <p class="description"><span class="plan-info-title">Active from:</span>&nbsp;{{activeSubscription.from}}</p>
+                        <p class="description"><span class="plan-info-title">{{languageData.plans.activeFromText}}</span>&nbsp;{{activeSubscription.from}}</p>
                         <div class="row">
                             <div class="col-lg-12" *ngIf="activePlan.id == 'P-7VM84154E5674234NMBWEAIA'">
                                 <div class="option selected">
-                                    <p class="option-title">Monthly</p>
-                                    <p class="option-value">2.50&euro;</p>
+                                    <p class="option-title">{{languageData.plans.basic.options[0].title}}</p>
+                                    <p class="option-value">{{languageData.plans.basic.options[0].price}}&euro;</p>
                                 </div>
                             </div>
                             <div class="col-lg-12" *ngIf="activePlan.id == 'P-5LP01409YW643441XMBWEBSY'">
                                 <div class="option selected">
-                                    <p class="option-title">Yearly</p>
-                                    <p class="option-value">25&euro;</p>
+                                    <p class="option-title">{{languageData.plans.basic.options[1].title}}</p>
+                                    <p class="option-value">{{languageData.plans.basic.options[1].price}}&euro;</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12" *ngIf="activePlan.id == 'P-0KP52199T1312045SMBWECWY'">
+                                <div class="option selected">
+                                    <p class="option-title">{{languageData.plans.pro.options[0].title}}</p>
+                                    <p class="option-value">{{languageData.plans.proo.options[0].price}}&euro;</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12" *ngIf="activePlan.id == 'P-2N608157S5769952BMBWEDKA'">
+                                <div class="option selected">
+                                    <p class="option-title">{{languageData.plans.basic.options[1].title}}</p>
+                                    <p class="option-value">{{languageData.plans.basic.options[1].price}}&euro;</p>
                                 </div>
                             </div>
                         </div>
-                        <p class="primary-text">If you want to cancel or upgrade the subscription, contact support at support@uploy.app or call +359 882 764 107</p>
+                        <p class="primary-text">{{languageData.plans.cancelText}}</p>
                     </div>
                 </div>
             </div>
             <div class="row subscriptions" *ngIf="!activeSubscription && showSubscriptionField">
                 <div class="col-lg-4">
                     <div class="plan">
-                        <p class="plan-title">Basic</p>
+                        <p class="plan-title">{{languageData.plans.basic.title}}</p>
                         <div class="plan-info">
-                            <p class="plan-info-title">Includes:</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Up to 2 questionnaires</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Best for small enterprises</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>24 hour support response time</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Only QR code integration</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Up to 2 locations</p>
+                            <p class="plan-info-title">{{languageData.plans.includesText}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.basic.includes[0]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.basic.includes[1]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.basic.includes[2]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.basic.includes[3]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.basic.includes[4]}}</p>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="option" [ngClass]="{'selected': selectedPlan == plan1El.id}" #plan1El id="P-7VM84154E5674234NMBWEAIA" (click)="selectedPlan = plan1El.id">
-                                    <p class="option-title">Monthly</p>
-                                    <p class="option-value">2.50&euro;</p>
+                                    <p class="option-title">{{languageData.plans.basic.options[0].title}}</p>
+                                    <p class="option-value">{{languageData.plans.basic.options[0].price}}&euro;</p>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="option" [ngClass]="{'selected': selectedPlan == plan2El.id}" #plan2El id="P-5LP01409YW643441XMBWEBSY" (click)="selectedPlan = plan2El.id">
-                                    <p class="option-title">Yearly</p>
-                                    <p class="option-value">25&euro;</p>
+                                    <p class="option-title">{{languageData.plans.basic.options[1].title}}</p>
+                                    <p class="option-value">{{languageData.plans.basic.options[1].price}}&euro;</p>
                                 </div>
                             </div>
                         </div>
-                        <p class="primary-text" *ngIf="showLoading && (selectedPlan == 'P-7VM84154E5674234NMBWEAIA' || selectedPlan == 'P-5LP01409YW643441XMBWEBSY')">Activating...</p>
-                        <button class="primary-button" *ngIf="selectedPlan && (selectedPlan == 'P-7VM84154E5674234NMBWEAIA' || selectedPlan == 'P-5LP01409YW643441XMBWEBSY')" (click)="activateSubscription()">Activate subscription</button>
+                        <p class="primary-text" *ngIf="showLoading && (selectedPlan == 'P-7VM84154E5674234NMBWEAIA' || selectedPlan == 'P-5LP01409YW643441XMBWEBSY')">{{languageData.activatingText}}</p>
+                        <button class="primary-button" *ngIf="selectedPlan && (selectedPlan == 'P-7VM84154E5674234NMBWEAIA' || selectedPlan == 'P-5LP01409YW643441XMBWEBSY')" (click)="activateSubscription()">{{languageData.activateButton}}</button>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="plan recommended-plan">
-                        <p class="recommended">Recommended</p>
-                        <p class="plan-title">Pro</p>
+                        <p class="recommended">{{languageData.recommendedText}}</p>
+                        <p class="plan-title">{{languageData.plans.pro.title}}</p>
                         <div class="plan-info">
-                            <p class="plan-info-title">Includes:</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>As many questionnaires as you want</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Best for medium-sized enterprises</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>6 hour support response time</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>QR code and NFC tag integrations</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Up to 3 locations</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Early access to new products and services</p>
+                            <p class="plan-info-title">{{languageData.plans.includesText}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.pro.includes[0]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.pro.includes[1]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.pro.includes[2]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.pro.includes[3]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.pro.includes[4]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.pro.includes[5]}}</p>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="option" [ngClass]="{'selected': selectedPlan == plan3El.id}" #plan3El id="P-0KP52199T1312045SMBWECWY" (click)="selectedPlan = plan3El.id">
-                                    <p class="option-title">Monthly</p>
-                                    <p class="option-value">5&euro;</p>
+                                    <p class="option-title">{{languageData.plans.pro.options[0].title}}</p>
+                                    <p class="option-value">{{languageData.plans.pro.options[0].price}}&euro;</p>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="option" [ngClass]="{'selected': selectedPlan == plan4El.id}" #plan4El id="P-2N608157S5769952BMBWEDKA" (click)="selectedPlan = plan4El.id">
-                                    <p class="option-title">Yearly</p>
-                                    <p class="option-value">45&euro;</p>
+                                    <p class="option-title">{{languageData.plans.pro.options[1].title}}</p>
+                                    <p class="option-value">{{languageData.plans.pro.options[1].price}}&euro;</p>
                                 </div>
                             </div>
                         </div>
-                        <p class="primary-text" *ngIf="showLoading && (selectedPlan == 'P-0KP52199T1312045SMBWECWY' || selectedPlan == 'P-2N608157S5769952BMBWEDKA')">Activating...</p>
-                        <button class="primary-button" *ngIf="selectedPlan && (selectedPlan == 'P-0KP52199T1312045SMBWECWY' || selectedPlan == 'P-2N608157S5769952BMBWEDKA')">Activate subscription</button>
+                        <p class="primary-text" *ngIf="showLoading && (selectedPlan == 'P-0KP52199T1312045SMBWECWY' || selectedPlan == 'P-2N608157S5769952BMBWEDKA')">{{languageData.activatingText}}</p>
+                        <button class="primary-button" *ngIf="selectedPlan && (selectedPlan == 'P-0KP52199T1312045SMBWECWY' || selectedPlan == 'P-2N608157S5769952BMBWEDKA')">{{languageData.activateButton}}</button>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="plan">
-                        <p class="plan-title">Custom</p>
+                        <p class="plan-title">{{languageData.plans.custom.title}}</p>
                         <div class="plan-info">
-                            <p class="plan-info-title">Includes:</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Everything from Pro</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Best for big enterprises</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Priority support</p>
-                            <p class="plan-info-item"><i class="fas fa-check"></i>Custom built solutions</p>
+                            <p class="plan-info-title">{{languageData.plans.includesText}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.custom.includes[0]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.custom.includes[1]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.custom.includes[2]}}</p>
+                            <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.custom.includes[3]}}</p>
                         </div>
-                        <p class="primary-text">Contact sales at support@uploy.app or by calling to +359 882 764 107 or +359 895 703 556</p>
+                        <p class="primary-text">{{languageData.plans.custom.salesMessage}}</p>
                     </div>
                 </div>
             </div>
