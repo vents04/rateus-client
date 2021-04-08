@@ -58,7 +58,7 @@
                 <span class="primary-text" *ngIf="business.status == 1 && activeSubscription  && showSubscriptionButton" routerLink="/subscriptions">{{languageData.showMySubscription}}</span>
             </div>
             <p class="description">{{subscriptionMessage}}</p>
-            <button class="primary-button" *ngIf="business.status == 1 && !activeSubscription  && showSubscriptionButton" routerLink="/subscriptions">{{languageData.subscriptionMessage}}</button>
+            <button class="primary-button" [style.background]="business.color" *ngIf="business.status == 1 && !activeSubscription  && showSubscriptionButton" routerLink="/subscriptions">{{languageData.subscriptionMessage}}</button>
             <div class="info-container fadeInBottom">
                 <i class="fas fa-info-circle" [style.color]="color"></i>
                 <p class="description">{{languageData.info[0]}} <span class="important">{{languageData.info[1]}}</span> {{languageData.info[2]}} <span class="important">{{languageData.info[3]}}</span></p>
