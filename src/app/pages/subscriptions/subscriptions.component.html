@@ -138,7 +138,7 @@
                             </div>
                         </div>
                         <p class="primary-text" *ngIf="showLoading && (selectedPlan == 'P-0KP52199T1312045SMBWECWY' || selectedPlan == 'P-2N608157S5769952BMBWEDKA')">{{languageData.activatingText}}</p>
-                        <button class="primary-button" *ngIf="selectedPlan && (selectedPlan == 'P-0KP52199T1312045SMBWECWY' || selectedPlan == 'P-2N608157S5769952BMBWEDKA')">{{languageData.activateButton}}</button>
+                        <button class="primary-button" *ngIf="selectedPlan && (selectedPlan == 'P-0KP52199T1312045SMBWECWY' || selectedPlan == 'P-2N608157S5769952BMBWEDKA')" (click)="activateSubscription()">{{languageData.activateButton}}</button>
                     </div>
                 </div>
                 <div class="col-lg-4">
