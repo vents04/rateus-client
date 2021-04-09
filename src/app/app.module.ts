@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ApplyComponent } from './pages/apply/apply.component';
 import { EditQuestionnaireComponent } from './pages/edit-questionnaire/edit-questionnaire.component';
 import { WebReqInterceptor } from './web-req.interceptor';
 import { AnswerQuestionnaireComponent } from './pages/answer-questionnaire/answer-questionnaire.component';
@@ -21,7 +20,6 @@ import { SubscriptionResultComponent } from './pages/subscription-result/subscri
   declarations: [
     AppComponent,
     HomeComponent,
-    ApplyComponent,
     EditQuestionnaireComponent,
     AnswerQuestionnaireComponent,
     LoginComponent,

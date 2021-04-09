@@ -1,23 +1,31 @@
 <div *ngIf="languageData">
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-body">
-                <p class="description color-dropdown-description">{{languageData.colorDropdown.title}}</p>
-                <div class="inline color-dropdown-inline">
-                    <div class="color color-dropdown-option big-color" [style.background]="'#90d977'" (click)="updateColor('#90d977')"></div>
-                    <div class="color color-dropdown-option big-color" [style.background]="'#f2d639'" (click)="updateColor('#f2d639')"></div>
-                    <div class="color color-dropdown-option big-color" [style.background]="'#d53939'" (click)="updateColor('#d53939')"></div>
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p class="description color-dropdown-description">{{languageData.colorDropdown.title}}</p>
+                    <div class="inline color-dropdown-inline">
+                        <div class="color color-dropdown-option big-color" [style.background]="'#90d977'"
+                            (click)="updateColor('#90d977')"></div>
+                        <div class="color color-dropdown-option big-color" [style.background]="'#f2d639'"
+                            (click)="updateColor('#f2d639')"></div>
+                        <div class="color color-dropdown-option big-color" [style.background]="'#d53939'"
+                            (click)="updateColor('#d53939')"></div>
+                    </div>
+                    <div class="inline color-dropdown-inline">
+                        <div class="color color-dropdown-option big-color" [style.background]="'#1f6cb0'"
+                            (click)="updateColor('#1f6cb0')"></div>
+                        <div class="color color-dropdown-option big-color" [style.background]="'#ea9215'"
+                            (click)="updateColor('#ea9215')"></div>
+                        <div class="color color-dropdown-option big-color" [style.background]="'#642ab6'"
+                            (click)="updateColor('#642ab6')"></div>
+                    </div>
+                    <p class="description" style="text-align: center">{{languageData.colorDropdown.description}}</p>
+                    <button class="small-primary-button lightgrey-button"
+                        data-dismiss="modal">{{languageData.colorDropdown.cancelButton}}</button>
                 </div>
-                <div class="inline color-dropdown-inline">
-                    <div class="color color-dropdown-option big-color" [style.background]="'#1f6cb0'" (click)="updateColor('#1f6cb0')"></div>
-                    <div class="color color-dropdown-option big-color" [style.background]="'#ea9215'" (click)="updateColor('#ea9215')"></div>
-                    <div class="color color-dropdown-option big-color" [style.background]="'#642ab6'" (click)="updateColor('#642ab6')"></div>
-                </div>
-                <p class="description" style="text-align: center">{{languageData.colorDropdown.description}}</p>
-                <button class="small-primary-button lightgrey-button" data-dismiss="modal">{{languageData.colorDropdown.cancelButton}}</button>
             </div>
-          </div>
         </div>
     </div>
     <div *ngIf="loadPage">
@@ -34,7 +42,8 @@
                 <p class="language-changer-title">{{languageData.dropdownTitle}}</p>
                 <p class="language-changer-language" (click)="updateLanguage('BG')">Български (BG)</p>
                 <p class="language-changer-language" (click)="updateLanguage('EN')">English (EN)</p>
-                <button class="small-primary-button lightgrey-button" (click)="showLanguageSelector = false">{{languageData.cancelButton}}</button>
+                <button class="small-primary-button lightgrey-button"
+                    (click)="showLanguageSelector = false">{{languageData.cancelButton}}</button>
             </div>
         </div>
         <div class="main-section" *ngIf="business">
@@ -47,21 +56,27 @@
             <div class="inline">
                 <p class="big-title">{{business.name}}</p>
                 <div class="color-container">
-                    <div class="color color-selector" [style.background]="business.color" data-toggle="modal" data-target="#exampleModalCenter"></div>
+                    <div class="color color-selector" [style.background]="business.color" data-toggle="modal"
+                        data-target="#exampleModalCenter"></div>
                 </div>
             </div>
             <div class="business-contacts">
                 <span class="description">{{business.email}}</span>
                 &middot;
                 <span class="description">{{business.phone}}</span>
-                <span *ngIf="business.status == 1 && activeSubscription  && showSubscriptionButton">&nbsp;&middot;&nbsp;</span>
-                <span class="primary-text" *ngIf="business.status == 1 && activeSubscription  && showSubscriptionButton" routerLink="/subscriptions">{{languageData.showMySubscription}}</span>
+                <span
+                    *ngIf="business.status == 1 && activeSubscription  && showSubscriptionButton">&nbsp;&middot;&nbsp;</span>
+                <span class="primary-text" *ngIf="business.status == 1 && activeSubscription  && showSubscriptionButton"
+                    routerLink="/subscriptions">{{languageData.showMySubscription}}</span>
             </div>
             <p class="description">{{subscriptionMessage}}</p>
-            <button class="primary-button" [style.background]="business.color" *ngIf="business.status == 1 && !activeSubscription  && showSubscriptionButton" routerLink="/subscriptions">{{languageData.subscriptionMessage}}</button>
+            <button class="primary-button" [style.background]="business.color"
+                *ngIf="business.status == 1 && !activeSubscription  && showSubscriptionButton"
+                routerLink="/subscriptions">{{languageData.subscriptionMessage}}</button>
             <div class="info-container fadeInBottom">
                 <i class="fas fa-info-circle" [style.color]="color"></i>
-                <p class="description">{{languageData.info[0]}} <span class="important">{{languageData.info[1]}}</span> {{languageData.info[2]}} <span class="important">{{languageData.info[3]}}</span></p>
+                <p class="description">{{languageData.info[0]}} <span class="important">{{languageData.info[1]}}</span>
+                    {{languageData.info[2]}} <span class="important">{{languageData.info[3]}}</span></p>
             </div>
             <div class="data-container container" *ngIf="dashboard">
                 <div class="row">
@@ -87,35 +102,51 @@
             </div>
             <div class="min-section" *ngIf="dashboard">
                 <p class="min-section-title">{{languageData.questionnaires.title}}</p>
-                <p class="error-text" *ngIf="showQuestionnaireResponse && showErrorQuestionnaire">{{languageData.errorCreating}}</p>
-                <button class="primary-button" *ngIf="activeSubscription && showSubscriptionButton && maximumQuestionnaires[dashboard.activeSubscription.plan.id] > dashboard.questionnaires.length" (click)="createQuestionnaire('Default title')">{{languageData.addQuestionnaireButton}}</button>
-                <p class="description" *ngIf="!activeSubscription && showSubscriptionButton">{{languageData.cannotActivate}}</p>
-                <p class="description" *ngIf="activeSubscription && showSubscriptionButton && maximumQuestionnaires[dashboard.activeSubscription.plan.id] == dashboard.questionnaires.length">{{languageData.maxQuestionnaires[0]}}&nbsp;{{maximumQuestionnaires[dashboard.activeSubscription.plan.id]}}&nbsp;{{languageData.maxQuestionnaires[1]}}</p>
-                <div class="questionnaire fadeInBottom" *ngFor="let questionnaire of dashboard.questionnaires" id="{{questionnaire._id}}" #questionnaireEl (click)="selectedQuestionnaire = questionnaire; showAnswers = !showAnswers; getAnswers()">
+                <p class="error-text" *ngIf="showQuestionnaireResponse && showErrorQuestionnaire">
+                    {{languageData.errorCreating}}</p>
+                <button class="primary-button"
+                    *ngIf="activeSubscription && showSubscriptionButton && maximumQuestionnaires[dashboard.activeSubscription.plan.id] > dashboard.questionnaires.length"
+                    (click)="createQuestionnaire('Default title')">{{languageData.addQuestionnaireButton}}</button>
+                <p class="description" *ngIf="!activeSubscription && showSubscriptionButton">
+                    {{languageData.cannotActivate}}</p>
+                <p class="description"
+                    *ngIf="activeSubscription && showSubscriptionButton && maximumQuestionnaires[dashboard.activeSubscription.plan.id] == dashboard.questionnaires.length">
+                    {{languageData.maxQuestionnaires[0]}}&nbsp;{{maximumQuestionnaires[dashboard.activeSubscription.plan.id]}}&nbsp;{{languageData.maxQuestionnaires[1]}}
+                </p>
+                <div class="questionnaire fadeInBottom" *ngFor="let questionnaire of dashboard.questionnaires"
+                    id="{{questionnaire._id}}" #questionnaireEl
+                    (click)="selectedQuestionnaire = questionnaire; showAnswers = !showAnswers; getAnswers()">
                     <p class="questionnaire-title">{{questionnaire.title}}
                         &nbsp;&middot;&nbsp;
-                        <span class="primary-text" (click)="redirectToQuestionnaire(questionnaireEl.id)" [style.color]="color">{{languageData.questionnaires.editButton}}</span>
+                        <span class="primary-text" (click)="redirectToQuestionnaire(questionnaireEl.id)"
+                            [style.color]="color">{{languageData.questionnaires.editButton}}</span>
                     </p>
-                    <p class="questionnaire-responses"><span class="questionnaire-responses-value" [style.color]="color">{{questionnaire.responses}}</span>&nbsp;{{languageData.questionnaires.responses}}</p>
+                    <p class="questionnaire-responses"><span class="questionnaire-responses-value"
+                            [style.color]="color">{{questionnaire.responses}}</span>&nbsp;{{languageData.questionnaires.responses}}
+                    </p>
                 </div>
             </div>
             <div class="min-section" *ngIf="showAnswers">
                 <p class="min-section-title">{{languageData.answers.title}} {{selectedQuestionnaire.title}}
                     &nbsp;&middot;&nbsp;
-                    <span class="primary-text" (click)="showAnswers = false" [style.color]="color">{{languageData.answers.closeAnswersButton}}</span>
+                    <span class="primary-text" (click)="showAnswers = false"
+                        [style.color]="color">{{languageData.answers.closeAnswersButton}}</span>
                 </p>
                 <p class="answers-warning">{{languageData.warning}}</p>
-                <div class="answers-table" *ngIf="selectedQuestionnaire.questions && selectedQuestionnaire.questionsCount">
+                <div class="answers-table"
+                    *ngIf="selectedQuestionnaire.questions && selectedQuestionnaire.questionsCount">
                     <table>
                         <tr>
                             <th class="short-cell">{{languageData.answers.table[0]}}</th>
                             <th>{{languageData.answers.table[1]}}</th>
-                            <th *ngFor="let question of counter(selectedQuestionnaire.questionsCount); let i = index">{{selectedQuestionnaire.questions[i].title}}</th>
+                            <th *ngFor="let question of counter(selectedQuestionnaire.questionsCount); let i = index">
+                                {{selectedQuestionnaire.questions[i].title}}</th>
                         </tr>
                         <tr *ngFor="let answer of selectedQuestionnaire.answers; let i = index">
                             <td>{{i+1}}</td>
                             <td>{{answer.dt}}</td>
-                            <td *ngFor="let question of counter(selectedQuestionnaire.questionsCount); let j = index">{{(answer.answers[j]) ? answer.answers[j].answer : null}}</td>
+                            <td *ngFor="let question of counter(selectedQuestionnaire.questionsCount); let j = index">
+                                {{(answer.answers[j]) ? answer.answers[j].answer : null}}</td>
                         </tr>
                     </table>
                 </div>
