@@ -32,7 +32,7 @@
                 <div class="col-lg-4">
                     <div class="plan">
                         <p class="plan-title">{{activePlan.name}}</p>
-                        <div class="plan-info" *ngIf="activePlan.id == 'P-7VM84154E5674234NMBWEAIA' || activePlan.id == 'P-5LP01409YW643441XMBWEBSY'">
+                        <div class="plan-info" *ngIf="activePlan.id == 'P-1ST774221H4980723MBYL2HA' || activePlan.id == 'P-57J52129MJ5241144MBYL2VQ'">
                             <p class="plan-info-title">{{languageData.plans.includesText}}</p>
                             <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.basic.includes[0]}}</p>
                             <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.basic.includes[1]}}</p>
@@ -40,7 +40,7 @@
                             <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.basic.includes[3]}}</p>
                             <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.basic.includes[4]}}</p>
                         </div>
-                        <div class="plan-info" *ngIf="activePlan.id == 'P-0KP52199T1312045SMBWECWY' || activePlan.id == 'P-2N608157S5769952BMBWEDKA'">
+                        <div class="plan-info" *ngIf="activePlan.id == 'P-9SN29932KP065714RMBYL3JA' || activePlan.id == 'P-2HM636590S8956245MBYL3VI'">
                             <p class="plan-info-title">{{languageData.plans.includesText}}</p>
                             <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.pro.includes[0]}}</p>
                             <p class="plan-info-item"><i class="fas fa-check"></i>{{languageData.plans.pro.includes[1]}}</p>
@@ -51,25 +51,25 @@
                         </div>
                         <p class="description"><span class="plan-info-title">{{languageData.plans.activeFromText}}</span>&nbsp;{{activeSubscription.from}}</p>
                         <div class="row">
-                            <div class="col-lg-12" *ngIf="activePlan.id == 'P-7VM84154E5674234NMBWEAIA'">
+                            <div class="col-lg-12" *ngIf="activePlan.id == 'P-1ST774221H4980723MBYL2HA'">
                                 <div class="option selected">
                                     <p class="option-title">{{languageData.plans.basic.options[0].title}}</p>
                                     <p class="option-value">{{languageData.plans.basic.options[0].price}}&euro;</p>
                                 </div>
                             </div>
-                            <div class="col-lg-12" *ngIf="activePlan.id == 'P-5LP01409YW643441XMBWEBSY'">
+                            <div class="col-lg-12" *ngIf="activePlan.id == 'P-57J52129MJ5241144MBYL2VQ'">
                                 <div class="option selected">
                                     <p class="option-title">{{languageData.plans.basic.options[1].title}}</p>
                                     <p class="option-value">{{languageData.plans.basic.options[1].price}}&euro;</p>
                                 </div>
                             </div>
-                            <div class="col-lg-12" *ngIf="activePlan.id == 'P-0KP52199T1312045SMBWECWY'">
+                            <div class="col-lg-12" *ngIf="activePlan.id == 'P-9SN29932KP065714RMBYL3JA'">
                                 <div class="option selected">
                                     <p class="option-title">{{languageData.plans.pro.options[0].title}}</p>
                                     <p class="option-value">{{languageData.plans.proo.options[0].price}}&euro;</p>
                                 </div>
                             </div>
-                            <div class="col-lg-12" *ngIf="activePlan.id == 'P-2N608157S5769952BMBWEDKA'">
+                            <div class="col-lg-12" *ngIf="activePlan.id == 'P-2HM636590S8956245MBYL3VI'">
                                 <div class="option selected">
                                     <p class="option-title">{{languageData.plans.basic.options[1].title}}</p>
                                     <p class="option-value">{{languageData.plans.basic.options[1].price}}&euro;</p>
@@ -94,20 +94,20 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
-                                <div class="option" [ngClass]="{'selected': selectedPlan == plan1El.id}" #plan1El id="P-7VM84154E5674234NMBWEAIA" (click)="selectedPlan = plan1El.id">
+                                <div class="option" [ngClass]="{'selected': selectedPlan == plan1El.id}" #plan1El id="P-1ST774221H4980723MBYL2HA" (click)="selectedPlan = plan1El.id">
                                     <p class="option-title">{{languageData.plans.basic.options[0].title}}</p>
                                     <p class="option-value">{{languageData.plans.basic.options[0].price}}&euro;</p>
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="option" [ngClass]="{'selected': selectedPlan == plan2El.id}" #plan2El id="P-5LP01409YW643441XMBWEBSY" (click)="selectedPlan = plan2El.id">
+                                <div class="option" [ngClass]="{'selected': selectedPlan == plan2El.id}" #plan2El id="P-57J52129MJ5241144MBYL2VQ" (click)="selectedPlan = plan2El.id">
                                     <p class="option-title">{{languageData.plans.basic.options[1].title}}</p>
                                     <p class="option-value">{{languageData.plans.basic.options[1].price}}&euro;</p>
                                 </div>
                             </div>
                         </div>
-                        <p class="primary-text" *ngIf="showLoading && (selectedPlan == 'P-7VM84154E5674234NMBWEAIA' || selectedPlan == 'P-5LP01409YW643441XMBWEBSY')">{{languageData.activatingText}}</p>
-                        <button class="primary-button" *ngIf="selectedPlan && (selectedPlan == 'P-7VM84154E5674234NMBWEAIA' || selectedPlan == 'P-5LP01409YW643441XMBWEBSY')" (click)="activateSubscription()">{{languageData.activateButton}}</button>
+                        <p class="primary-text" *ngIf="showLoading && (selectedPlan == 'P-1ST774221H4980723MBYL2HA' || selectedPlan == 'P-57J52129MJ5241144MBYL2VQ')">{{languageData.activatingText}}</p>
+                        <button class="primary-button" *ngIf="selectedPlan && (selectedPlan == 'P-1ST774221H4980723MBYL2HA' || selectedPlan == 'P-57J52129MJ5241144MBYL2VQ')" (click)="activateSubscription()">{{languageData.activateButton}}</button>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -125,20 +125,20 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
-                                <div class="option" [ngClass]="{'selected': selectedPlan == plan3El.id}" #plan3El id="P-0KP52199T1312045SMBWECWY" (click)="selectedPlan = plan3El.id">
+                                <div class="option" [ngClass]="{'selected': selectedPlan == plan3El.id}" #plan3El id="P-9SN29932KP065714RMBYL3JA" (click)="selectedPlan = plan3El.id">
                                     <p class="option-title">{{languageData.plans.pro.options[0].title}}</p>
                                     <p class="option-value">{{languageData.plans.pro.options[0].price}}&euro;</p>
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="option" [ngClass]="{'selected': selectedPlan == plan4El.id}" #plan4El id="P-2N608157S5769952BMBWEDKA" (click)="selectedPlan = plan4El.id">
+                                <div class="option" [ngClass]="{'selected': selectedPlan == plan4El.id}" #plan4El id="P-2HM636590S8956245MBYL3VI" (click)="selectedPlan = plan4El.id">
                                     <p class="option-title">{{languageData.plans.pro.options[1].title}}</p>
                                     <p class="option-value">{{languageData.plans.pro.options[1].price}}&euro;</p>
                                 </div>
                             </div>
                         </div>
-                        <p class="primary-text" *ngIf="showLoading && (selectedPlan == 'P-0KP52199T1312045SMBWECWY' || selectedPlan == 'P-2N608157S5769952BMBWEDKA')">{{languageData.activatingText}}</p>
-                        <button class="primary-button" *ngIf="selectedPlan && (selectedPlan == 'P-0KP52199T1312045SMBWECWY' || selectedPlan == 'P-2N608157S5769952BMBWEDKA')" (click)="activateSubscription()">{{languageData.activateButton}}</button>
+                        <p class="primary-text" *ngIf="showLoading && (selectedPlan == 'P-9SN29932KP065714RMBYL3JA' || selectedPlan == 'P-2HM636590S8956245MBYL3VI')">{{languageData.activatingText}}</p>
+                        <button class="primary-button" *ngIf="selectedPlan && (selectedPlan == 'P-9SN29932KP065714RMBYL3JA' || selectedPlan == 'P-2HM636590S8956245MBYL3VI')" (click)="activateSubscription()">{{languageData.activateButton}}</button>
                     </div>
                 </div>
                 <div class="col-lg-4">
