@@ -1,2 +1,2 @@
-export const ROOT_URL = 'https://api.rateus.uploy.app';
-export const ROOT_URL_FRONTEND = 'https://rateus.uploy.app';
+export const ROOT_URL = 'http://localhost:8081';
+export const ROOT_URL_FRONTEND = 'http://localhost:4200';

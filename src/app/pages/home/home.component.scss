@@ -1,5 +1,54 @@
 @import '../../../styles.scss';
 
+.navbar-topbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 4rem;
+    box-shadow: 0px 0px 6px #e7e7e7;
+    position: fixed;
+    overflow-y: hidden;
+    width: 100vw;
+    background-color: white;
+    z-index: 100;
+}
+
+.navbar-inline {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .signup-button-small {
+        margin-right: 1rem;
+        padding: 0.5rem 1.25rem;
+        display: none;
+    }
+
+    .signup-button-big {
+        margin-right: 1rem;
+    }
+}
+
+.logo {
+    text-align: left;
+    width: max-content;
+}
+
+.language-changer {
+    margin-top: 0rem !important;
+    position: relative;
+    margin-right: 0rem !important;
+}
+
+.language-changer-dropdown {
+    margin-top: 8rem;
+    right: 0;
+    margin-right: 2rem;
+    width: max-content;
+    position: fixed;
+}
+
 .beta {
     color: $primary;
     font-family: $semi-bold-font;
@@ -51,6 +100,27 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .navbar-topbar {
+        padding: 1rem 2rem;
+        
+        .logo {
+            font-size: 1rem;
+        }
+        .product {
+            font-size: 0.75rem;
+        }
+        .language-changer-topbar {
+            .description {
+                font-size: 0.75rem;
+            }
+        }
+        .signup-button-small {
+            display: block;
+        }
+        .signup-button-big {
+            display: none;
+        }
+    }
     .slogan {
         font-size: 2.5rem;
         max-width: 95%;
@@ -60,6 +130,10 @@
     }
     .fab:first-of-type {
         margin-left: 0px;
+    }
+    .language-changer-dropdown {
+        margin-top: 6rem;
+        margin-right: 1rem;
     }
 }
 

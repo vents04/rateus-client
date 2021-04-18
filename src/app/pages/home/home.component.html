@@ -1,4 +1,24 @@
 <div *ngIf="languageData">
+    <div class="navbar-topbar">
+        <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
+        <div class="navbar-inline">
+            <button class="primary-button signup-button-big" routerLink="/signup">Signup</button>
+            <button class="small-primary-button signup-button-small" routerLink="/signup">Signup</button>
+            <div class="language-changer">
+                <div class="language-changer-topbar" (click)="showLanguageSelector = !showLanguageSelector">
+                    <p class="description">{{language}}</p>
+                    <i class="fas fa-sort-down"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="language-changer-dropdown" *ngIf="showLanguageSelector">
+        <p class="language-changer-title">{{languageData.dropdownTitle}}</p>
+        <p class="language-changer-language" (click)="updateLanguage('BG')">Български (BG)</p>
+        <p class="language-changer-language" (click)="updateLanguage('EN')">English (EN)</p>
+        <button class="small-primary-button lightgrey-button" (click)="showLanguageSelector = false">{{languageData.cancelButton}}</button>
+    </div>
+    <!--
     <div class="language-changer">
         <div class="language-changer-topbar" (click)="showLanguageSelector = !showLanguageSelector">
             <p class="description">{{language}}</p>
@@ -10,6 +30,15 @@
             <p class="language-changer-language" (click)="updateLanguage('EN')">English (EN)</p>
             <button class="small-primary-button lightgrey-button" (click)="showLanguageSelector = false">{{languageData.cancelButton}}</button>
         </div>
+    </div>
+    -->
+    <div class="centered-content" *ngIf="loadPage">
+        <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
+        <p class="beta">{{languageData.beta}}</p>
+        <p class="slogan fadeInBottom">{{languageData.slogan}}</p>
+        <button class="primary-button" routerLink="/signup">{{languageData.signupButton}}</button>
+        <p class="description">{{languageData.description}}</p>
+        <p class="primary-text" routerLink="/login" *ngIf="!authenticated">{{languageData.primaryText}}t</p>
     </div>
     <div class="centered-content" *ngIf="loadPage">
         <p class="logo" routerLink="/">Uploy&nbsp;<span class="product">|&nbsp;Rate us</span></p>
