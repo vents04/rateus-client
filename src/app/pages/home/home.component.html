@@ -48,12 +48,12 @@
                 <div class="row">
                     <div class="col-lg-12 col-sm-12 col-xs-12">
                         <div class="col-container">
-                            <p class="col-title fadeInBottom">What do you get?</p>
-                            <p class="col-description fadeInBottom"><i class="fas fa-check-circle"></i>Better overview of what your customers think for your business</p>
-                            <p class="col-description fadeInBottom"><i class="fas fa-check-circle"></i>The ability to preview if new changes are likable to to your customers.</p>
-                            <p class="col-description fadeInBottom"><i class="fas fa-check-circle"></i>Honest feedback because all of your customers' answers are anonymous</p>
-                            <p class="col-description fadeInBottom"><i class="fas fa-check-circle"></i>Increase in sales if clients' feedback is important for you</p>
-                            <p class="col-description fadeInBottom"><i class="fas fa-check-circle"></i>Closer connection between you and the customer in which they feel as a participant in your business</p>
+                            <p class="col-title fadeInBottom">{{languageData.whatDoYouGetSeciton.title}}</p>
+                            <p class="col-description fadeInBottom"><i class="fas fa-check-circle"></i>{{languageData.whatDoYouGetSeciton.advantages[0]}}</p>
+                            <p class="col-description fadeInBottom"><i class="fas fa-check-circle"></i>{{languageData.whatDoYouGetSeciton.advantages[1]}}</p>
+                            <p class="col-description fadeInBottom"><i class="fas fa-check-circle"></i>{{languageData.whatDoYouGetSeciton.advantages[2]}}</p>
+                            <p class="col-description fadeInBottom"><i class="fas fa-check-circle"></i>{{languageData.whatDoYouGetSeciton.advantages[3]}}</p>
+                            <p class="col-description fadeInBottom"><i class="fas fa-check-circle"></i>{{languageData.whatDoYouGetSeciton.advantages[4]}}</p>
                         </div>
                     </div>
                 </div>
@@ -62,27 +62,27 @@
         <hr>
         <div class="content-container how-to-container">
             <div class="container">
-                <p class="col-title fadeInBottom" style="text-align:center">How it works?</p>
+                <p class="col-title fadeInBottom" style="text-align:center">{{languageData.howItWorksSection.title}}</p>
                 <div class="row">
                     <div class="col-lg-4 col-sm-12 col-xs-12">
                         <div class="col-container">
                             <i class="fas fa-user-plus col-icon"></i>
-                            <p class="col-small-title">Signup</p>
-                            <p class="col-description" style="text-align: center">You signup to the platform and we will activate your account ASAP if it meets our requirements.</p>
+                            <p class="col-small-title">{{languageData.howItWorksSection.columns[0].title}}</p>
+                            <p class="col-description" style="text-align: center">{{languageData.howItWorksSection.columns[0].description}}</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-12 col-xs-12">
                         <div class="col-container">
                             <i class="fas fa-wallet col-icon"></i>
-                            <p class="col-small-title">Subscription</p>
-                            <p class="col-description" style="text-align: center">Log in to your dashboard and you can activate a subscription which you found suitable to your business.</p>
+                            <p class="col-small-title">{{languageData.howItWorksSection.columns[1].title}}</p>
+                            <p class="col-description" style="text-align: center">{{languageData.howItWorksSection.columns[1].description}}</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-sm-12 col-xs-12">
                         <div class="col-container">
                             <i class="fas fa-qrcode col-icon"></i>
-                            <p class="col-small-title">Live</p>
-                            <p class="col-description" style="text-align: center">We will deliver all your QR code cards and NFC tags personally if you are based in Sofia, Bulgaria. If you are not we will send you a pack of all the files needed to go live which you can print.</p>
+                            <p class="col-small-title">{{languageData.howItWorksSection.columns[2].title}}</p>
+                            <p class="col-description" style="text-align: center">{{languageData.howItWorksSection.columns[2].description}}</p>
                         </div>
                     </div>
                 </div>
@@ -90,9 +90,9 @@
         </div>
         <hr>
         <div class="content-container final-container">
-                <p class="col-title fadeInBottom">Are you ready to improve your business?</p>
-                <p class="col-description">You can ask additional questions at support@uploy.app or by calling +359 882 764 107</p>
-                <button class="primary-button" routerLink="/signup">Yes, I will not miss this opportunity!</button>
+                <p class="col-title fadeInBottom">{{languageData.finalSection.title}}</p>
+                <p class="col-description">{{languageData.finalSection.description}}</p>
+                <button class="primary-button" routerLink="/signup">{{languageData.finalSection.buttonText}}</button>
         </div>
     </div>
 </div>
