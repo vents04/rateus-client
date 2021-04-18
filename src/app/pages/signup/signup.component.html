@@ -43,9 +43,10 @@
             </div>
             <p class="error-text">{{errorMessage}}</p>
             <p class="success-text" *ngIf="showSuccess">{{languageData.success}}</p>
-            <button class="primary-button grey-button" *ngIf="showSecondPage || showThirdPage" (click)="goBackPage()">Go back</button>
+            <button class="primary-button grey-button" *ngIf="showSecondPage || showThirdPage" (click)="goBackPage()">{{languageData.goBackButton}}</button>
             <button class="primary-button" (click)="signup(nameEl.value, emailEl.value, phoneEl.value, passwordEl.value)">{{languageData.continueButton}}</button>
             <p class="error-text" *ngIf="error">{{errorMessage}}</p>
+            <p class="primary-text" *ngIf="showFirstPage" style="text-align: center; margin-top: 1rem;" routerLink="/login">{{languageData.loginText}}</p>
         </div>
     </div>
 </div>
