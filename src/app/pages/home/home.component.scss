@@ -85,12 +85,12 @@
 }
 
 .content-container {
-    height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    margin: 9rem 0rem;
 }
 
 .showoff-image {
@@ -133,6 +133,12 @@
     justify-content: center;
 }
 
+.fa-check-circle {
+    font-size: 1.15rem;
+    color: $primary;
+    margin-right: 10px;
+}
+
 .fadeInBottom { animation-name: fadeInBottom }
 @keyframes fadeInBottom {
     from {
@@ -155,8 +161,7 @@
 
 @media only screen and (max-width: 768px) {
     .content-container {
-        margin-top: 3rem;
-
+        margin: 3rem 0rem;
         .col-title {
             font-size: 1.5rem;
         }
