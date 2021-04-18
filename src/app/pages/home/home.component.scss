@@ -12,6 +12,7 @@
     width: 100vw;
     background-color: white;
     z-index: 100;
+    height: 15vh;
 }
 
 .navbar-inline {
@@ -78,6 +79,59 @@
 
 .slogan span { display: inline-block }
 
+.page {
+    padding-top: 15vh;
+    height: 100vh;
+}
+
+.content-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.showoff-image {
+    background-image: url('../../../assets/images/showoff_2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 6px;
+    padding-bottom: 100%;
+    width: 100%;
+}
+
+.col-container {
+    padding: 1rem;
+}
+
+.col-title {
+    font-family: $bold-font;
+    font-size: 3rem;
+    color: #262626;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+}
+
+.col-description {
+    font-family: $regular-font;
+    font-size: 1rem;
+    color: gray;
+    text-align: justify;
+    margin-top: 2rem;
+}
+
+.aligned-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 .fadeInBottom { animation-name: fadeInBottom }
 @keyframes fadeInBottom {
@@ -100,8 +154,27 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .content-container {
+        margin-top: 3rem;
+
+        .col-title {
+            font-size: 1.5rem;
+        }
+
+        .col-description {
+            font-size: 0.85rem;
+        }
+    }
+    .aligned-container {
+        display: block;      
+    } 
+    .page {
+        padding-top: 10vh;
+        height: 100vh;
+    }
     .navbar-topbar {
         padding: 1rem 2rem;
+        height: 10vh;
         
         .logo {
             font-size: 1rem;
