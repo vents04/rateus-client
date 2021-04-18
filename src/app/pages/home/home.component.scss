@@ -169,6 +169,24 @@
     margin-top: 1rem;
 }
 
+.final-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    .col-description {
+        max-width: 80%;
+        text-align: center;
+    }
+
+    .primary-button {
+        margin-top: 2rem;
+        margin-bottom: 9rem;
+    }
+}
+
 .fadeInBottom { animation-name: fadeInBottom }
 @keyframes fadeInBottom {
     from {
@@ -190,6 +208,11 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .final-container {
+        .primary-button {
+            margin-bottom: 3rem;
+        }
+    }
     .content-container {
         margin: 3rem 0rem;
         .col-title {
