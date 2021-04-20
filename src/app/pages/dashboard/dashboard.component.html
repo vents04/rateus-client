@@ -114,15 +114,17 @@
                     {{languageData.maxQuestionnaires[0]}}&nbsp;{{maximumQuestionnaires[dashboard.activeSubscription.plan.id]}}&nbsp;{{languageData.maxQuestionnaires[1]}}
                 </p>
                 <div class="questionnaire fadeInBottom" *ngFor="let questionnaire of dashboard.questionnaires"
-                    id="{{questionnaire._id}}" #questionnaireEl
-                    (click)="selectedQuestionnaire = questionnaire; showAnswers = !showAnswers; getAnswers()">
+                    id="{{questionnaire._id}}" #questionnaireEl>
                     <p class="questionnaire-title">{{questionnaire.title}}
                         &nbsp;&middot;&nbsp;
                         <span class="primary-text" (click)="redirectToQuestionnaire(questionnaireEl.id)"
                             [style.color]="color">{{languageData.questionnaires.editButton}}</span>
                     </p>
-                    <p class="questionnaire-responses"><span class="questionnaire-responses-value"
-                            [style.color]="color">{{questionnaire.responses}}</span>&nbsp;{{languageData.questionnaires.responses}}
+                    <p class="questionnaire-responses" (click)="selectedQuestionnaire = questionnaire; showAnswers = !showAnswers; getAnswers()"><span class="questionnaire-responses-value"
+                        [style.color]="color">{{questionnaire.responses}}</span>&nbsp;{{languageData.questionnaires.responses}}
+                        &nbsp;&middot;&nbsp;
+                        <span class="primary-text"
+                            [style.color]="color">{{languageData.questionnaires.openAnswers}}</span>
                     </p>
                 </div>
             </div>
