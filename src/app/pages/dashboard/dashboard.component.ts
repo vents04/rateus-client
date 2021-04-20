@@ -47,6 +47,9 @@ export class DashboardComponent implements OnInit {
   showQuestionnaireResponse: boolean = false;
   showSuccessQuestionnaire: boolean = false;
   showErrorQuestionnaire: boolean = false;
+  showUpdatePassword: boolean = false;
+
+  errorMessage: string = undefined;
 
   maximumQuestionnaires = {
     'P-1ST774221H4980723MBYL2HA': 2,
@@ -184,6 +187,21 @@ export class DashboardComponent implements OnInit {
       })
     ).subscribe((response: HttpResponse<any>) => {
       this.router.navigate([`/edit-questionnaire/${response.body.questionnaire._id}`]);
+    })
+  }
+
+  updatePassword(currentPassword: string, newPassword: string): void {
+    this.businessService.updatePassword(currentPassword, newPassword).pipe(
+      catchError((err: any) => {
+        this.errorMessage = err.error;
+        if(this.errorMessage == "Current password is not valid") {
+          this.errorMessage = this.languageData.invalidCurrentPassword;
+        }
+        return throwError(err);
+      })
+    ).subscribe((response: HttpResponse<any>) => {
+      this.authService.removeSession();
+      this.router.navigate(['/login']);
     })
   }
 }

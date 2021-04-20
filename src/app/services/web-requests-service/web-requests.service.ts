@@ -107,5 +107,11 @@ export class WebRequestsService {
     return this.http.get(`${ROOT_URL}/business/${businessId}/is-active`,
     { observe: 'response', responseType: 'json' });
   }
+
+  updatePassword(currentPassword: string, newPassword: string) {
+    return this.http.put(`${ROOT_URL}/business/password`,
+    { currentPassword: currentPassword, newPassword: newPassword }, 
+    { observe: 'response', responseType: 'json' });
+  }
 }
 

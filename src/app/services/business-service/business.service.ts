@@ -27,4 +27,8 @@ export class BusinessService {
   checkIsActive(businessId: string) {
     return this.webRequestsService.checkBusinessActive(businessId);
   }
+
+  updatePassword(currentPassword: string, newPassword: string) {
+    return this.webRequestsService.updatePassword(currentPassword, newPassword);
+  }
 }

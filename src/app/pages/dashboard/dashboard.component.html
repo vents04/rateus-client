@@ -153,6 +153,24 @@
                     </table>
                 </div>
             </div>
+            <hr>
+            <div class="min-section">
+                <button class="primary-button" (click)="showUpdatePassword = !showUpdatePassword" *ngIf="!showUpdatePassword">Update password</button>
+                <div *ngIf="showUpdatePassword" class="password-update">
+                    <div class="modal-input-container">
+                        <p class="modal-input-title">Current password</p>
+                        <input type="password" class="modal-input" placeholder="Click here to type" #currentPasswordEl>
+                    </div>
+                    <div class="modal-input-container">
+                        <p class="modal-input-title">New password</p>
+                        <input type="password" class="modal-input" placeholder="Click here to type" #newPasswordEl>
+                    </div>
+                    <p class="error-text">{{errorMessage}}</p>
+                    <button class="primary-button" (click)="updatePassword(currentPasswordEl.value, newPasswordEl.value)">Save new password</button>
+                    <br>
+                    <button class="primary-button grey-button" (click)="showUpdatePassword = false">Abort</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

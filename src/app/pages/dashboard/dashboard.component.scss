@@ -280,6 +280,52 @@ th {
     margin-top: 0.75rem;
 }
 
+.modal-input-container {
+    border: 1px solid #e7e7e7;
+    font-family: $regular-font;
+    font-size: 1rem;
+    padding: 0.75rem 0.9rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+    width: max-content;
+    min-width: 300px;
+}
+
+.modal-input-title {
+    margin-block-start: 0px !important;
+    margin-block-end: 0px !important;
+    font-family: $regular-font;
+    font-size: 0.75rem;
+    color: gray;
+}
+
+.modal-input {
+    padding: 0.25rem 0.1rem;
+    border: none;
+    font-family: $regular-font;
+    font-size: 1rem;
+    color: black;
+    margin-top: 0.25rem;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.password-update {
+    button {
+        width: 250px;
+    }
+}
+
+.error-text {
+    color: $error;
+    font-family: $semi-bold-font;
+    font-size: 1rem;
+    margin-top: 0.75rem;
+    text-align: center;
+}
+
 .fadeInBottom { animation-name: fadeInBottom }
 @keyframes fadeInBottom {
     from {
@@ -300,6 +346,15 @@ th {
 }
 
 @media only screen and (max-width: 768px) {
+    .password-update {
+        button {
+            width: 100%;
+        }
+    }
+    .modal-input-container {
+        max-width: 100%;
+        width: 100%;
+    }
     .navbar-topbar {
         padding: 1rem 2rem;
 
