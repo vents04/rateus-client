@@ -1,4 +1,18 @@
 <div *ngIf="languageData">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p class="question-title" style="text-align: center">{{languageData.deleteDropdown.description}}</p>
+                    <button class="primary-button" (click)="deleteQuestionnaire()" 
+                        data-dismiss="modal">{{languageData.deleteDropdown.yesText}}</button>
+                    <button class="primary-button lightgrey-button"
+                        data-dismiss="modal">{{languageData.deleteDropdown.noText}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="language-changer">
         <div class="language-changer-topbar" (click)="showLanguageSelector = !showLanguageSelector">
             <p class="description">{{language}}</p>
@@ -43,6 +57,8 @@
             <p class="error-text" *ngIf="errorUpdate">{{languageData.error}}</p>
             <p class="error-text" *ngIf="errorNull">{{languageData.errorNull}}</p>
             <p class="success-text" *ngIf="successUpdate">{{languageData.success}}</p>
+            <button class="primary-button red-button" data-toggle="modal"
+            data-target="#exampleModalCenter">{{languageData.deleteQuestionnaireButton}}</button>
         </div>
     </div>
 </div>

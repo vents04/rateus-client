@@ -136,4 +136,10 @@ export class EditQuestionnaireComponent implements OnInit {
       this.languageData = response.body.languageData;
     })
   }
+
+  deleteQuestionnaire(): void {
+    this.questionnaireService.deleteQuestionnaire(this.questionnaireId).subscribe((response: HttpResponse<any>) => {
+      this.router.navigate(['/dashboard']);
+    })
+  }
 }

@@ -19,4 +19,8 @@ export class QuestionnaireService {
   createQuestionnaire(title: string) {
     return this.webRequestsService.createQuestionnaire(title);
   }
+
+  deleteQuestionnaire(id: string) {
+    return this.webRequestsService.deleteQuestionnaire(id);
+  }
 }

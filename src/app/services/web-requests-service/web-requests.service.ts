@@ -65,6 +65,11 @@ export class WebRequestsService {
     { observe: 'response', responseType: 'json' });
   }
 
+  deleteQuestionnaire(id: string) {
+    return this.http.delete(`${ROOT_URL}/questionnaire/${id}`,
+    { observe: 'response', responseType: 'json' });
+  }
+
   createAnswer(answers: any, questionnaireId: string) {
     return this.http.post(`${ROOT_URL}/answer`,
     { answers: answers, questionnaireId: questionnaireId },
