@@ -57,6 +57,8 @@
             <p class="error-text" *ngIf="errorUpdate">{{languageData.error}}</p>
             <p class="error-text" *ngIf="errorNull">{{languageData.errorNull}}</p>
             <p class="success-text" *ngIf="successUpdate">{{languageData.success}}</p>
+            <hr>
+            <button class="primary-button grey-button" routerLink="/dashboard">{{languageData.cancelEditQuestionnaire}}</button>
             <button class="primary-button red-button" data-toggle="modal"
             data-target="#exampleModalCenter">{{languageData.deleteQuestionnaireButton}}</button>
         </div>
