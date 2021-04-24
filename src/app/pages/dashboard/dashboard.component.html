@@ -126,6 +126,7 @@
                         <span class="primary-text"
                             [style.color]="color">{{languageData.questionnaires.openAnswers}}</span>
                     </p>
+                    <button class="primary-button">{{languageData.downloadQRCodesText}}</button>
                 </div>
             </div>
             <div class="min-section" *ngIf="showAnswers">
@@ -155,20 +156,20 @@
             </div>
             <hr>
             <div class="min-section">
-                <button class="primary-button" (click)="showUpdatePassword = !showUpdatePassword" *ngIf="!showUpdatePassword">Update password</button>
+                <button class="primary-button" (click)="showUpdatePassword = !showUpdatePassword" *ngIf="!showUpdatePassword">{{languageData.updatePasswordSection.updatePasswordText}}</button>
                 <div *ngIf="showUpdatePassword" class="password-update">
                     <div class="modal-input-container">
-                        <p class="modal-input-title">Current password</p>
-                        <input type="password" class="modal-input" placeholder="Click here to type" #currentPasswordEl>
+                        <p class="modal-input-title">{{languageData.updatePasswordSection.currentPasswordText}}</p>
+                        <input type="password" class="modal-input" placeholder="{{languageData.updatePasswordSection.placeholder}}" #currentPasswordEl>
                     </div>
                     <div class="modal-input-container">
-                        <p class="modal-input-title">New password</p>
-                        <input type="password" class="modal-input" placeholder="Click here to type" #newPasswordEl>
+                        <p class="modal-input-title">{{languageData.updatePasswordSection.newPasswordText}}</p>
+                        <input type="password" class="modal-input" placeholder="{{languageData.updatePasswordSection.placeholder}}" #newPasswordEl>
                     </div>
                     <p class="error-text">{{errorMessage}}</p>
-                    <button class="primary-button" (click)="updatePassword(currentPasswordEl.value, newPasswordEl.value)">Save new password</button>
+                    <button class="primary-button" (click)="updatePassword(currentPasswordEl.value, newPasswordEl.value)">{{languageData.updatePasswordSection.saveNewPasswordText}}</button>
                     <br>
-                    <button class="primary-button grey-button" (click)="showUpdatePassword = false">Abort</button>
+                    <button class="primary-button grey-button" (click)="showUpdatePassword = false">{{languageData.updatePasswordSection.abortText}}</button>
                 </div>
             </div>
         </div>
