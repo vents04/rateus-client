@@ -15,6 +15,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { SubscriptionsComponent } from './pages/subscriptions/subscriptions.component';
 import { SubscriptionResultComponent } from './pages/subscription-result/subscription-result.component';
+import { FooterComponent } from './pages/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SubscriptionResultComponent } from './pages/subscription-result/subscri
     SignupComponent,
     SubscriptionsComponent,
     SubscriptionResultComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

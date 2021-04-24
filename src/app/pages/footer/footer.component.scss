@@ -1,0 +1,53 @@
+@import '../../../styles.scss';
+
+.footer-contents {
+    background-color: #fafafa;
+    padding: 1rem 4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.inline {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    p {
+        margin-left: 2rem;
+    }
+}
+
+p {
+    font-size: 0.8rem;
+}
+
+.rights {
+    font-family: $regular-font;
+    color: #777;
+}
+
+.support {
+    font-family: $regular-font;
+    color: $primary;
+}
+
+@media only screen and (max-width: 768px) {
+    .footer-contents {
+        padding: 1rem;
+        flex-direction: column;
+    }
+
+    div {
+        margin-top: 0.5rem;
+
+        p {
+            margin-left: 0px;
+        }
+
+        .support:nth-of-type(2) {
+            margin-left: 1rem;
+        }
+    }
+}
