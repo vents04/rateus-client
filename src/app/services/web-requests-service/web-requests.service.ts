@@ -113,5 +113,10 @@ export class WebRequestsService {
     { currentPassword: currentPassword, newPassword: newPassword }, 
     { observe: 'response', responseType: 'json' });
   }
+
+  downloadAnswers(questionnaireId: string, fileType: string) {
+    return this.http.get(`${ROOT_URL}/questionnaire/${questionnaireId}/download-answers/${fileType}`,
+    { observe: 'response', responseType: 'text' });
+  }
 }
 

@@ -9,6 +9,7 @@ import { BusinessService } from 'src/app/services/business-service/business.serv
 import { LanguageService } from 'src/app/services/language-service/language.service';
 import { QuestionnaireService } from 'src/app/services/questionnaire-service/questionnaire.service';
 import { SubscriptionService } from 'src/app/services/subscription-service/subscription.service';
+import { WebRequestsService } from 'src/app/services/web-requests-service/web-requests.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,7 +24,8 @@ export class DashboardComponent implements OnInit {
               private answerService: AnswerService,
               private questionnaireService: QuestionnaireService,
               private languageService: LanguageService,
-              private subscriptionService: SubscriptionService) { }
+              private subscriptionService: SubscriptionService,
+              private webRequestsService: WebRequestsService) { }
 
   authenticated: boolean = false;
   loadPage: boolean = false;
@@ -202,6 +204,25 @@ export class DashboardComponent implements OnInit {
     ).subscribe((response: HttpResponse<any>) => {
       this.authService.removeSession();
       this.router.navigate(['/login']);
+    })
+  }
+
+  downloadInCSV(): void {
+    const questionnaireId = this.selectedQuestionnaire._id;
+    this.webRequestsService.downloadAnswers(questionnaireId, 'csv').subscribe((response: HttpResponse<any>) => {
+      const blob = new Blob([response.body], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+
+      var a = window.document.createElement('a');
+      a.href = window.URL.createObjectURL(new Blob([response.body], {type: 'text/csv'}));
+      a.download = `Answers to ${this.selectedQuestionnaire.title}.csv`;
+
+      // Append anchor to body.
+      document.body.appendChild(a);
+      a.click();
+
+      // Remove anchor from body
+      document.body.removeChild(a);
     })
   }
 }

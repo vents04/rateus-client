@@ -136,6 +136,7 @@
                         [style.color]="color">{{languageData.answers.closeAnswersButton}}</span>
                 </p>
                 <p class="answers-warning">{{languageData.warning}}</p>
+                <button class="primary-button" (click)="downloadInCSV()">{{languageData.answers.downloadInCsv}}</button>
                 <div class="answers-table"
                     *ngIf="selectedQuestionnaire.questions && selectedQuestionnaire.questionsCount">
                     <table>
